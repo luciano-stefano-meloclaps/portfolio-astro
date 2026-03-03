@@ -2,7 +2,7 @@
 // src/components/ui/StatusBadge.astro
 import {
   IconCircleCheckFilled, // Icono más sólido y premium
-  IconClockFilled,
+  IconTool,
   IconArchiveFilled,
   IconAlertCircleFilled,
 } from '@tabler/icons-react';
@@ -30,13 +30,13 @@ const statusConfig: Record<
     label: 'Completado',
   },
   'In Progress': {
-    icon: IconClockFilled,
+    icon: IconTool,
     colorClass: 'text-amber-400 bg-amber-500/10 border-amber-500/20',
-    label: 'En Desarrollo',
+    label: 'Desarrollando',
   },
   Archived: {
     icon: IconArchiveFilled,
-    colorClass: 'text-slate-400 bg-slate-500/10 border-slate-500/20',
+    colorClass: 'text-sky-400 bg-sky-500/10 border-sky-500/20 shadow-[0_0_10px_rgba(56,189,248,0.1)]',
     label: 'Archivado',
   },
   default: {
@@ -52,13 +52,13 @@ const Icon = config.icon;
 
 <div
   class:list={[
-    'inline-flex cursor-default items-center gap-x-1.5 rounded-full border px-3 py-1 backdrop-blur-md transition-all duration-300 hover:scale-105',
+    'inline-flex cursor-default items-center justify-center gap-x-1.5 rounded-small border px-3 py-1 min-w-[130px] w-fit backdrop-blur-md transition-all duration-300 hover:scale-105',
     config.colorClass,
     className,
   ]}
 >
   <Icon
-    className={`h-4 w-4 ${status === 'In Progress' ? 'animate-pulse' : ''}`}
+    className={`h-4 w-4 shrink-0 flex-none ${status === 'In Progress' ? 'animate-pulse' : ''}`}
   />
 
   <span
