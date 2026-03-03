@@ -7,6 +7,7 @@ import StatusBadge from '@/components/ui/StatusBadge.astro';
 import TechChip from '@/components/ui/TechChip.astro';
 import { techIconMap } from '@/config/tech-icon-map';
 import { normalizeTechName } from '@/lib/normalizeTech';
+import { IconExternalLink } from '@tabler/icons-react';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -14,7 +15,7 @@ interface Props {
 }
 
 const { project, index } = Astro.props;
-const { title, tagline, cover, status, techStack } = project.data;
+const { title, tagline, cover, status, techStack, demoUrl } = project.data;
 
 // Limitamos a 3 tecnologías visibles
 const visibleTechs = techStack.slice(0, 3);
@@ -60,6 +61,11 @@ const isLCP = index === 0;
         >
           {title}
         </h4>
+        {demoUrl && (
+          <span class="flex items-center gap-1 rounded-full border border-text-primary/20 bg-text-primary/10 px-2 py-1 text-[10px] font-bold tracking-widest text-text-primary uppercase" title="Live Demo Available">
+            <IconExternalLink className="h-3 w-3" /> DEMO
+          </span>
+        )}
       </div>
 
       <p

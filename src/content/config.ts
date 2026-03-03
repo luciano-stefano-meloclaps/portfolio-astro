@@ -16,6 +16,7 @@ const projectsCollection = defineCollection({
       publishDate: z.date(),
       repoUrl: z.string().url().optional(),
       figmaUrl: z.string().url().optional(),
+      demoUrl: z.string().url().optional(),
     }),
 });
 

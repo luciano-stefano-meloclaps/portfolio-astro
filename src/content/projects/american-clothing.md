@@ -29,6 +29,7 @@ techStack:
   - 'Trello'
 publishDate: 2024-11-01
 repoUrl: 'https://gitlab.com/CamiloCarabajal/ecommerce-vintage.git'
+demoUrl: 'https://america-clothing.vercel.app/'
 ---
 
 <!--
