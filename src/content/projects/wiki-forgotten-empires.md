@@ -1,5 +1,5 @@
 ---
-title: 'Wiki Forgotten Empires'
+title: 'Forgotten Empires'
 tagline: 'Arquitectura Backend robusta y escalable con .NET y Clean Architecture.'
 status: 'In Progress'
 cover: '@/assets/images/projects/forgotten-empires/forgotten-empires-api-landing-hero.webp'
