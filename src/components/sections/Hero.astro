@@ -1,5 +1,7 @@
 ---
 // src/components/sections/Hero.astro
+import { Image } from 'astro:assets';
+import heroImage from '@/assets/images/hero/hero10.jpg';
 import AnimatedProfession from '@/components/ui/AnimatedProfession.astro';
 import StatusChip from '@/components/ui/StatusChip.astro';
 import Button from '@/components/ui/Button.astro';
@@ -9,101 +11,201 @@ import {
   IconFocus2,
   IconUsersGroup,
   IconBrandGithub,
+  IconChevronsRight,
 } from '@tabler/icons-react';
 ---
 
 <section
-  class="relative flex min-h-screen w-full flex-col items-center justify-center overflow-hidden"
+  class="dark relative z-10 flex min-h-screen w-full flex-col items-center justify-center overflow-hidden bg-[#1F2225]"
 >
+  <!-- IMAGEN DE FONDO: Máxima Calidad y Nitidez (Local Asset) -->
+  <div class="absolute inset-0 z-0 overflow-hidden">
+    <Image
+      src={heroImage}
+      alt="Hero Background"
+      loading="eager"
+      class="h-full w-full object-cover opacity-90 grayscale"
+    />
+  </div>
+
   <div
     class="pointer-events-none absolute inset-0 z-0 flex items-center justify-center"
   >
-    <!-- Luz Light Mode: Blanco/Gris muy suave -->
+    <!-- Luces de ambiente: Reintroducidas quirúrgicamente para dar profundidad 3D detrás de los módulos -->
     <div
-      class="absolute h-[800px] w-[800px] rounded-full bg-white/50 opacity-60 blur-[120px] dark:hidden"
+      class="absolute left-1/4 top-1/4 h-[600px] w-[600px] rounded-full bg-white/5 opacity-10 blur-[120px]"
     >
     </div>
-
-    <!-- Luz Dark Mode: Tu Magenta original, pero sutil -->
     <div
-      class="bg-accent-magenta/20 absolute hidden h-[600px] w-[600px] rounded-full opacity-50 blur-[150px] dark:block"
+      class="bg-accent-magenta/5 absolute bottom-1/4 right-1/4 h-[500px] w-[500px] rounded-full opacity-10 blur-[100px]"
     >
     </div>
   </div>
 
-  <!-- CONTENIDO PRINCIPAL -->
+  <!-- GRADIENTE DE TRANSICIÓN: Blendeo suave con las secciones siguientes -->
   <div
-    class="relative z-10 flex w-full max-w-5xl flex-col items-center gap-y-8 px-4 text-center"
+    class="pointer-events-none absolute bottom-0 left-0 z-20 h-48 w-full bg-gradient-to-t from-background to-transparent"
   >
-    <!-- H1 SEMÁNTICO -->
-    <h1
-      class="hero-name-container flex flex-row flex-wrap items-center justify-center gap-3 font-mono text-sm uppercase tracking-[0.2em] text-text-secondary opacity-80 md:text-base"
-    >
-      <span>HOLA, SOY</span>
-      <span class="font-normal text-inherit">LUCIANO STEFANO MELO CLAPS</span>
-    </h1>
+  </div>
 
-    <!-- Título Animado -->
-    <div class="hero-title mt-2 drop-shadow-xl dark:drop-shadow-2xl">
-      <AnimatedProfession />
-    </div>
-
-    <!-- Subtítulo -->
-    <p
-      class="hero-subtitle max-w-xl text-base font-light leading-relaxed tracking-wide text-text-secondary md:text-lg"
-    >
-      Técnico en Programación. Aplico principios <strong>SOLID</strong> para desarrollar
-      arquitecturas robustas e interfaces modernas. Mi enfoque asegura sistemas escalables
-      y altamente optimizados en <strong>.NET</strong> y <strong>React</strong>.
-    </p>
-
-    <!-- Chips -->
-    <div class="hero-chips flex flex-wrap justify-center gap-4">
-      <StatusChip
-        Icon={IconCode}
-        label="Mode"
-        value="Full-Stack"
-        variant="active"
-      />
-      <StatusChip
-        Icon={IconUsersGroup}
-        label="Core"
-        value=".Net & React"
-        variant="warning"
-      />
-      <StatusChip
-        Icon={IconFocus2}
-        label="Focus"
-        value="SEO & UX/UI"
-        variant="positive"
-      />
-    </div>
-
-    <!-- Botones -->
+  <div
+    class="relative z-10 mx-auto w-full max-w-[1920px] px-6 pb-32 pt-24 md:px-16 md:pb-40 lg:pb-48 xl:px-32"
+  >
     <div
-      class="hero-buttons flex w-full max-w-xs flex-col gap-4 pt-6 sm:max-w-none sm:flex-row sm:justify-center"
+      class="flex flex-col items-center justify-center gap-12 md:gap-16 2xl:grid 2xl:grid-cols-2 2xl:items-center 2xl:gap-x-64 2xl:gap-y-0"
     >
-      <Button
-        href="#projects"
-        variant="primary"
-        class="w-full justify-center md:w-48"
+      <!-- BLOQUE 1: BRANDING & ACTIONS (Locked to Left Column) -->
+      <div
+        class="flex flex-col items-center text-center 2xl:items-start 2xl:justify-self-start 2xl:text-left"
       >
-        <span>Proyectos</span>
-        <AnimatedArrowIcon />
-      </Button>
+        <!-- Branding Stack -->
+        <div class="flex flex-col gap-y-0">
+          <h1
+            class="hero-name-container font-mono text-[10px] uppercase tracking-[0.8em] text-white md:text-xs 2xl:pl-1 2xl:text-left"
+          >
+            <span>LUCIANO STEFANO MELO CLAPS</span>
+          </h1>
 
-      <Button
-        href="https://github.com/luciano-stefano-meloclaps"
-        variant="secondary"
-        target="_blank"
-        class="w-full justify-center md:w-48"
+          <div class="relative w-full 2xl:w-fit 2xl:text-left">
+            <!-- CAPA DE ANIMACIÓN: Absoluta para no afectar al flujo ni al ancho -->
+            <div
+              class="hero-title absolute inset-0 z-10 flex items-center justify-center drop-shadow-2xl 2xl:justify-start"
+            >
+              <AnimatedProfession />
+            </div>
+
+            <!-- GHOST ELEMENT: Único elemento en flujo. Bloquea el ancho al máximo ("SOFTWARE DEVELOPER") -->
+            <div
+              class="pointer-events-none invisible select-none overflow-hidden"
+              aria-hidden="true"
+            >
+              <div
+                class="flex flex-col items-center gap-2 text-4xl font-semibold uppercase tracking-tighter md:text-8xl lg:flex-row lg:items-baseline lg:justify-start lg:gap-4 lg:text-7xl"
+              >
+                <span>SOFTWARE</span>
+                <span>DEVELOPER</span>
+              </div>
+            </div>
+
+            <!-- LINEA SEPARADORA ESTATICA: Siempre mide lo mismo que el ghost -->
+            <div
+              class="mx-auto mt-10 h-px w-4/5 bg-white/60 lg:mt-20 2xl:mx-0 2xl:w-full"
+            >
+            </div>
+          </div>
+        </div>
+
+        <!-- ACCIONES -->
+        <div
+          class="hero-buttons mt-12 flex w-full flex-wrap items-center justify-center gap-3 md:mt-16 md:gap-4 2xl:justify-start"
+        >
+          <Button
+            href="#projects"
+            variant="primary"
+            class="w-full justify-center px-8 sm:w-auto"
+          >
+            Proyectos
+            <IconChevronsRight strokeWidth={1.5} size={18} />
+          </Button>
+
+          <Button
+            href="https://www.canva.com/design/DAG4V27-0Wk/HgggLJ002MEOSg366vvCQw/edit"
+            variant="secondary"
+            target="_blank"
+            class="w-full justify-center px-8 sm:w-auto"
+          >
+            Canva
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1.5"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="h-4 w-4"
+              ><path d="M4 4h7v7H4z"></path><path d="M4 13h7v7H4z"></path><path
+                d="M13 4h7v7h-7z"></path><path d="M13 13h7v7h-7z"></path></svg
+            >
+          </Button>
+
+          <Button
+            href="https://github.com/luciano-stefano-meloclaps"
+            variant="secondary"
+            target="_blank"
+            class="w-full justify-center px-8 sm:w-auto"
+          >
+            GitHub
+            <IconBrandGithub strokeWidth={1.2} size={18} />
+          </Button>
+        </div>
+      </div>
+
+      <!-- BLOQUE 2: INFO MODULE (Locked to Right Column) -->
+      <div
+        class="hero-info-module mt-2 flex flex-col items-center md:mt-12 lg:mt-0 lg:justify-self-end"
       >
-        <IconBrandGithub strokeWidth={1.0} className="icon-base" />
-        <span>GitHub</span>
-      </Button>
+        <div
+          class="glass-panel card-border flex w-full max-w-[520px] flex-col justify-center gap-y-12 rounded-medium p-10 shadow-2xl backdrop-blur-3xl md:p-14"
+        >
+          <!-- Subtítulo -->
+          <p
+            class="text-sm font-light leading-relaxed tracking-wide text-text-primary md:text-base lg:text-lg"
+          >
+            Técnico en Programación enfocado en la creación de <strong
+              class="font-weight italic text-text-secondary"
+              >arquitecturas robustas. <br /></strong
+            >Aplico <strong class="font-weight italic text-text-secondary"
+              >principios SOLID</strong
+            > para asegurar sistemas escalables y altamente optimizados.
+          </p>
+
+          <!-- Chips -->
+          <div class="flex flex-col gap-2 md:gap-6">
+            <StatusChip
+              Icon={IconCode}
+              label="Mode"
+              value="Full-Stack"
+              variant="active"
+            />
+            <StatusChip
+              Icon={IconUsersGroup}
+              label="Core"
+              value=".Net & React"
+              variant="warning"
+            />
+            <StatusChip
+              Icon={IconFocus2}
+              label="Focus"
+              value="SEO & UX/UI"
+              variant="positive"
+            />
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </section>
+
+<style is:global>
+  /* ARQUITECTURA DE AISLAMIENTO TOTAL:
+     Usamos is:global para evitar el scoping de Astro.
+     Forzamos las variables de modo oscuro en el Hero Y todos sus hijos,
+     sin importar qué clase tenga el <html> o <body>.
+  */
+  section.dark,
+  section.dark * {
+    --color-background: 31 34 37;
+    --color-panel-bg: 31 34 37;
+    --color-text-primary: 234 234 234;
+    --color-text-secondary: 145 148 151;
+    --color-border: 145 148 151;
+    --color-grid-line: 255 255 255;
+  }
+</style>
+
 <script>
   import gsap from 'gsap';
 
@@ -114,8 +216,7 @@ import {
     const elements = [
       '.hero-name-container',
       '.hero-title',
-      '.hero-subtitle',
-      '.hero-chips',
+      '.hero-info-module',
       '.hero-buttons',
     ];
 

@@ -69,22 +69,33 @@ const INITIAL_LIMIT = 4;
       }
     </div>
 
-    <!-- ⚡ BOTÓN VER MÁS (REDISEÑADO) -->
-    {
-      allProjects.length > INITIAL_LIMIT && (
-        <div
-          class="mt-12 flex justify-center"
-          id="load-more-projects-container"
-        >
-          <div id="load-more-projects-trigger">
-            <Button variant="secondary" class="group min-w-[200px]">
-              Ver Más Proyectos
-              <IconChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
-            </Button>
+    <!-- ⚡ BOTONES DE ACCIÓN (Original Centered) -->
+    <div class="mt-12 flex flex-col items-center justify-center gap-6 sm:flex-row">
+      {
+        allProjects.length > INITIAL_LIMIT && (
+          <div id="load-more-projects-container">
+            <div id="load-more-projects-trigger">
+              <Button variant="secondary" class="group min-w-[200px]">
+                Ver Más Proyectos
+                <IconChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
+              </Button>
+            </div>
           </div>
-        </div>
-      )
-    }
+        )
+      }
+
+      <Button
+        href="https://www.canva.com/design/DAG4V27-0Wk/HgggLJ002MEOSg366vvCQw/edit"
+        variant="primary"
+        target="_blank"
+        class="min-w-[200px]"
+      >
+        <span class="flex items-center gap-2">
+          Portafolio Canva
+          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="h-4 w-4"><path d="M4 4h7v7H4z"/><path d="M4 13h7v7H4z"/><path d="M13 4h7v7h-7z"/><path d="M13 13h7v7h-7z"/></svg>
+        </span>
+      </Button>
+    </div>
   </div>
 
   <!-- OVERLAY MODAL (Sin cambios) -->
