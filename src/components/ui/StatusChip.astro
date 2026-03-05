@@ -88,7 +88,11 @@ const theme = variantConfig[variant];
   ]}
 >
   <div class="flex items-center gap-x-2.5">
-    <Icon class:list={['h-4 w-4', theme.text]} strokeWidth={1.5} />
+    <Icon
+      class="h-4 w-4"
+      style={{ color: "rgba(234, 234, 234, 0.7)" }}
+      strokeWidth={1.5}
+    />
     <div class="flex gap-1.5 font-sans text-xs uppercase tracking-wider">
       <span class="text-text-secondary/80 font-bold">{label}</span>
       <span class="bg-border/50 h-3 w-[1px] self-center"></span>
