@@ -7,11 +7,13 @@ import ThemeManager from '@/components/modules/ThemeManager.astro';
 import Navbar from '@/components/modules/Navbar.astro';
 import MobileMenu from '@/components/modules/MobileMenu.astro';
 
-interface Props {
+export interface Props {
   title?: string;
   description?: string;
   image?: string;
   canonicalURL?: string;
+  // allow preloading additional images for LCP optimization
+  preloadImages?: string[];
 }
 
 const fullName = 'Luciano Stefano Melo Claps';
@@ -24,9 +26,48 @@ const {
   description = defaultDescription,
   image = '/og-image.jpg',
   canonicalURL = Astro.url.href,
+  // allow passing a list of images to preload (absolute or relative URLs)
+  preloadImages = [],
 } = Astro.props;
 
 const ogImageUrl = new URL(image, siteUrl).href;
+
+// hero image import can be used for preloading on the home page
+import heroImage from '@/assets/images/hero/hero10.jpg';
+// the imported asset returns ImageMetadata
+const heroImageUrl = new URL((heroImage as any).src || heroImage, siteUrl).href;
+
+// build breadcrumb items based on current path
+const pathname = Astro.url.pathname; // e.g. '/certifications/aws-cloud-foundations/'
+const segments = pathname.split('/').filter((s) => s !== '');
+
+function segmentName(seg: string): string {
+  // map known slugs to readable names
+  const map: Record<string, string> = {
+    certifications: 'Certificaciones',
+    projects: 'Proyectos',
+  };
+  return map[seg] || seg.replace(/-/g, ' ');
+}
+
+const breadcrumbItems = [
+  {
+    '@type': 'ListItem',
+    position: 1,
+    name: 'Inicio',
+    item: siteUrl,
+  },
+];
+
+segments.forEach((seg, idx) => {
+  const position = breadcrumbItems.length + 1;
+  breadcrumbItems.push({
+    '@type': 'ListItem',
+    position,
+    name: segmentName(seg),
+    item: new URL(seg + '/', siteUrl).href,
+  });
+});
 
 const personSchema = {
   '@context': 'https://schema.org',
@@ -59,6 +100,12 @@ const personSchema = {
     <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
 
+    {/* preconnect for potential font/CDN usage */}
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    {/* preload common LCP assets */}
+    <link rel="preload" as="image" href={heroImageUrl} />
+    {preloadImages.map((url: string) => <link rel="preload" as="image" href={url} />)}
+
     <SEO
       title={title}
       description={description}
@@ -83,10 +130,40 @@ const personSchema = {
     />
 
     <ThemeManager />
+
+    {/* Structured data: person + website */}
     <script
       type="application/ld+json"
       set:html={JSON.stringify(personSchema)}
     />
+    <script
+      type="application/ld+json"
+      set:html={JSON.stringify({
+        '@context': 'https://schema.org',
+        '@type': 'WebSite',
+        url: siteUrl,
+        name: fullName,
+        potentialAction: {
+          '@type': 'SearchAction',
+          target: `${siteUrl}?s={search_term_string}`,
+          'query-input': 'required name=search_term_string',
+        },
+      })}
+    />
+
+    {/* optional breadcrumb list for richer snippets */}
+    {
+      segments.length > 0 && (
+        <script
+          type="application/ld+json"
+          set:html={JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: breadcrumbItems,
+          })}
+        />
+      )
+    }
   </head>
 
   <body

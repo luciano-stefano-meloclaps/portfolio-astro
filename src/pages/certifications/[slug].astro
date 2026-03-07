@@ -16,7 +16,10 @@ export async function getStaticPaths() {
 const { certification } = Astro.props;
 ---
 
-<Layout title={certification.data.title}>
+<Layout
+  title={certification.data.title}
+  description={certification.data.description}
+>
   <main class="py-24 md:py-32">
     <div class="container-narrow">
       <!-- Renderizamos el componente CertificationCard -->

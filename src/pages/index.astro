@@ -10,7 +10,12 @@ import Contact from '@/components/sections/Contact.astro';
 import Footer from '@/components/sections/Footer.astro';
 ---
 
-<Layout>
+<Layout
+  preloadImages={[
+    '/assets/images/hero/hero10.jpg',
+    /* additional resources (e.g., first project) can be added later */
+  ]}
+>
   <main>
     <Hero />
     <About />
