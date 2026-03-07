@@ -15,22 +15,20 @@ const { title, subtitle, class: className } = Astro.props;
     className,
   ]}
 >
-  <h2 class="sr-only">{title}</h2>
-
-  <!-- 
-    SOLUCIÓN DEFINITIVA:
-    - UN ÚNICO ELEMENTO que se anima
-    - El ::before es SOLO para visualización del stroke (no se anima)
-    - Evita completamente el problema de dos elementos desincronizados
-  -->
-  <div class="relative inline-flex overflow-hidden" aria-hidden="true">
+  <!-- visible, semantic heading used for animation as well -->
+  <h2
+    class="relative inline-flex overflow-hidden"
+    aria-labelledby={`section-title-${title.replace(/\s+/g, '-')}`}
+  >
     <span
+      id={`section-title-${title.replace(/\s+/g, '-')}`}
       class="will-change-opacity text-h2 font-bold uppercase tracking-tighter md:text-h1"
       data-role="text"
     >
       {title}
     </span>
-  </div>
+  </h2>
+  <!-- SOLUCIÓN: único elemento <h2> animado, accesible y visible -->
 
   {
     subtitle && (
