@@ -7,7 +7,6 @@ import StatusBadge from '@/components/ui/StatusBadge.astro';
 import TechChip from '@/components/ui/TechChip.astro';
 import { techIconMap } from '@/config/tech-icon-map';
 import { normalizeTechName } from '@/lib/normalizeTech';
-import { IconExternalLink } from '@tabler/icons-react';
 
 interface Props {
   project: CollectionEntry<'projects'>;
@@ -15,7 +14,7 @@ interface Props {
 }
 
 const { project, index } = Astro.props;
-const { title, tagline, cover, status, techStack, demoUrl } = project.data;
+const { title, tagline, cover, status, techStack } = project.data;
 
 // Limitamos a 3 tecnologías visibles
 const visibleTechs = techStack.slice(0, 3);
@@ -97,15 +96,9 @@ const isLCP = index === 0;
       </div>
 
       <div
-        class="mt-auto flex flex-wrap items-center gap-3 border-t border-border pt-4"
+        class="mt-auto flex items-center justify-between border-t border-border pt-4"
       >
         <StatusBadge status={status} />
-        {demoUrl && (
-          <div class="inline-flex cursor-default items-center justify-center gap-x-1.5 rounded-small border px-3 py-1 min-w-[130px] w-fit backdrop-blur-md transition-all duration-300 hover:scale-105 text-text-primary bg-text-primary/10 border-text-primary/20 shadow-[0_0_10px_rgba(255,255,255,0.1)] dark:shadow-[0_0_10px_rgba(255,255,255,0.1)]" title="Demo Disponible">
-            <IconExternalLink className="h-4 w-4 shrink-0 flex-none" />
-            <span class="pt-[1px] text-[10px] font-bold uppercase leading-none tracking-wider">Demo</span>
-          </div>
-        )}
       </div>
     </div>
   </Card>

@@ -11,6 +11,7 @@ export default {
         panel: 'rgb(var(--color-panel-bg) / <alpha-value>)',
         'text-primary': 'rgb(var(--color-text-primary) / <alpha-value>)',
         'text-secondary': 'rgb(var(--color-text-secondary) / <alpha-value>)',
+        'text-navbar': 'rgb(var(--color-text-navbar) / <alpha-value>)',
         border: 'rgb(var(--color-border) / <alpha-value>)',
 
         // Agregamos grid-line que la usamos en el Layout

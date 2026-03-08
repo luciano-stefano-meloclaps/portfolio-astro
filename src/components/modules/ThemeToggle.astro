@@ -6,15 +6,16 @@
 
 <button
   id="theme-toggle"
-  class="/* REFINAMIENTO: Botón más pequeño (h-7 w-7) */ relative flex h-8 w-8 items-center justify-center rounded-full text-text-secondary transition-colors duration-300 hover:text-text-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary"
+  class="/* REFINAMIENTO: Botón más pequeño (h-7 w-7) */ text-text-navbar/50 hover:text-text-navbar relative flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary dark:text-text-primary/50 hover:dark:text-text-primary"
   aria-label="Toggle light and dark theme"
+  {...Astro.props}
 >
   <!-- REFINAMIENTO: Contenedor de icono más pequeño (h-5 w-5) -->
   <div class="relative h-5 w-5 overflow-hidden">
     <div
       id="icon-sun"
       class="sun-icon absolute inset-0 fill-none stroke-current"
-      style="stroke-width: 1.0; stroke-linecap: round;"
+      style="stroke-width: 2.0; stroke-linecap: round;"
     >
       {/* REFINAMIENTO: SVG más pequeño (h-5 w-5) */}
       <svg class="h-5 w-5" viewBox="0 0 24 24">
@@ -41,7 +42,7 @@
     <div
       id="icon-moon"
       class="moon-icon absolute inset-0 fill-none stroke-current"
-      style="stroke-width: 1.0; stroke-linecap: round; stroke-linejoin: round;"
+      style="stroke-width: 2.0; stroke-linecap: round; stroke-linejoin: round;"
     >
       {/* REFINAMIENTO: SVG más pequeño (h-5 w-5) */}
       <svg class="h-5 w-5" viewBox="0 0 24 24">
