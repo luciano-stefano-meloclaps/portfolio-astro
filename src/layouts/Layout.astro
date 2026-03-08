@@ -104,7 +104,11 @@ const personSchema = {
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     {/* preload common LCP assets */}
     <link rel="preload" as="image" href={heroImageUrl} />
-    {preloadImages.map((url: string) => <link rel="preload" as="image" href={url} />)}
+    {
+      preloadImages.map((url: string) => (
+        <link rel="preload" as="image" href={url} />
+      ))
+    }
 
     <SEO
       title={title}

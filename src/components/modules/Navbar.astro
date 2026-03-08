@@ -18,12 +18,12 @@ import { IconMenu, IconX } from '@tabler/icons-react';
     <!-- Navegación de Escritorio -->
     <div class="hidden items-center md:flex">
       <Links
-        aClass="text-sm font-light tracking-widest text-text-secondary hover:text-text-primary hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.3)] dark:hover:drop-shadow-[0_0_8px_rgba(255,255,255,0.1)]"
+        aClass="text-sm text-text-navbar/70 tracking-widest dark:!text-text-primary/70 hover:!text-text-navbar"
       />
     </div>
 
     <!-- Separador (Solo Desktop) -->
-    <div class="text-secondary hidden h-4 w-px bg-border md:block"></div>
+    <div class="hidden h-4 w-px bg-border/70 dark:bg-border md:block"></div>
 
     <!-- 
       CONTROLES (TEMA + MENÚ)
@@ -31,12 +31,12 @@ import { IconMenu, IconX } from '@tabler/icons-react';
     <div
       class="flex w-full items-center justify-between md:w-auto md:justify-start md:gap-x-2"
     >
-      <ThemeToggle />
+      <ThemeToggle class="text-text-navbar hover:text-text-primary" />
 
       <!-- Botón de Menú Móvil -->
       <button
         id="mobile-menu-toggle"
-        class="hover:text-accent-magenta cursor-pointer p-2 text-text-primary transition-colors md:hidden"
+        class="text-text-navbar/70 hover:text-text-navbar cursor-pointer p-2 transition-colors md:hidden"
         aria-label="Abrir o cerrar menú"
       >
         <div id="icon-menu" class="block">
