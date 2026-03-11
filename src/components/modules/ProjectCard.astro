@@ -5,6 +5,7 @@ import Card from '@/components/ui/Card.astro';
 import Button from '@/components/ui/Button.astro';
 import StatusBadge from '@/components/ui/StatusBadge.astro';
 import TechChip from '@/components/ui/TechChip.astro';
+
 import { normalizeTechName } from '@/lib/normalizeTech';
 import { techIconMap } from '@/config/tech-icon-map';
 import {
@@ -116,6 +117,7 @@ const hasHiddenFeatures = hiddenFeatures.length > 0;
         <div class="stagger-item mb-8">
           <div class="mb-4 flex items-center justify-between">
             <StatusBadge status={status} />
+            {demoUrl && <StatusBadge status="Demo" />}
           </div>
           <h3 class="mb-4 text-3xl font-bold leading-tight tracking-tight text-text-primary md:text-4xl">{title}</h3>
           <p class="text-base font-light leading-relaxed text-text-secondary md:text-lg">{description}</p>

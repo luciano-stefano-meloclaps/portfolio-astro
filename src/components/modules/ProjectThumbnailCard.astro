@@ -8,13 +8,15 @@ import TechChip from '@/components/ui/TechChip.astro';
 import { techIconMap } from '@/config/tech-icon-map';
 import { normalizeTechName } from '@/lib/normalizeTech';
 
+
+
 interface Props {
   project: CollectionEntry<'projects'>;
   index: number;
 }
 
 const { project, index } = Astro.props;
-const { title, tagline, cover, status, techStack } = project.data;
+const { title, tagline, cover, status, techStack, demoUrl } = project.data;
 
 // Limitamos a 3 tecnologías visibles
 const visibleTechs = techStack.slice(0, 3);
@@ -99,6 +101,7 @@ const isLCP = index === 0;
         class="mt-auto flex items-center justify-between border-t border-border pt-4"
       >
         <StatusBadge status={status} />
+        {demoUrl && <StatusBadge status="Demo" />}
       </div>
     </div>
   </Card>
