@@ -18,10 +18,6 @@ export default defineConfig({
 
   integrations: [react(), tailwind(), sitemap()],
 
-  image: {
-    service: { entrypoint: 'astro/assets/services/noop' },
-  },
-
   // 5. Configuración de entorno de desarrollo
   server: {
     host: true,
