@@ -1,0 +1,100 @@
+[baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
+[2m13:22:02[22m [34m[content][39m Syncing content
+[2m13:22:03[22m [34m[content][39m Synced content
+[2m13:22:03[22m [34m[types][39m Generated [2m912ms[22m
+[2m13:22:03[22m [34m[check][39m Getting diagnostics for Astro files in D:\Portfolios\portfolioLanding...
+[96msrc/components/modules/CertificationCard.astro[0m:[93m36[0m:[93m113[0m - [93mwarning[0m[90m ts(6385): [0m'(from: number, length?: number | undefined): string' is deprecated.
+
+[7m36[0m const uniqueId = `cert-${title.toLowerCase().replace(/\s+/g, '-')}-${credentialId || Math.random().toString(36).substr(2, 9)}`;
+[7m  [0m [93m                                                                                                                ~~~~~~[0m
+
+[96msrc/components/modules/ExperienceCard.astro[0m:[93m235[0m:[93m44[0m - [93mwarning[0m[90m ts(6133): [0m'e' is declared but its value is never read.
+
+[7m235[0m     cardWrapper.addEventListener('click', (e) => {
+[7m   [0m [93m                                           ~[0m
+
+[96msrc/components/ui/FilterBar.astro[0m:[93m90[0m:[93m3[0m - [93mwarning[0m[90m ts(6133): [0m'normalizeTechName' is declared but its value is never read.
+
+[7m90[0m   import { normalizeTechName } from '@/lib/normalizeTech';
+[7m  [0m [93m  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/FilterChip.astro[0m:[93m3[0m:[93m1[0m - [93mwarning[0m[90m ts(6192): [0mAll imports in import declaration are unused.
+
+[7m3[0m import { techColorMap, defaultTechColor } from '@/config/tech-colors';
+[7m [0m [93m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~[0m
+
+[96msrc/components/ui/FilterPill.astro[0m:[93m59[0m:[93m18[0m - [93mwarning[0m[90m ts(6385): [0m'event' is deprecated.
+
+[7m59[0m         onclick="event.stopPropagation(); this.parentElement?.click();"
+[7m  [0m [93m                 ~~~~~[0m
+
+[96msrc/components/ui/FormField.astro[0m:[93m11[0m:[93m11[0m - [93mwarning[0m[90m ts(6196): [0m'Props' is declared but never used.
+
+[7m11[0m interface Props {
+[7m  [0m [93m          ~~~~~[0m
+
+[96msrc/components/ui/StatusBadge.astro[0m:[93m12[0m:[93m6[0m - [93mwarning[0m[90m ts(6196): [0m'Status' is declared but never used.
+
+[7m12[0m type Status = 'Completed' | 'In Progress' | 'Archived' | 'On Hold';
+[7m  [0m [93m     ~~~~~~[0m
+
+[96msrc/layouts/Layout.astro[0m:[93m51[0m:[93m7[0m - [91merror[0m[90m ts(2451): [0mCannot redeclare block-scoped variable 'ogImageUrl'.
+
+[7m51[0m const ogImageUrl = new URL(optimizedOgImage.src, siteUrl).href;
+[7m  [0m [91m      ~~~~~~~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m49[0m:[93m7[0m - [91merror[0m[90m ts(2451): [0mCannot redeclare block-scoped variable 'ogImageUrl'.
+
+[7m49[0m const ogImageUrl = new URL(optimizedOgImage.src, siteUrl).href;
+[7m  [0m [91m      ~~~~~~~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m75[0m:[93m24[0m - [93mwarning[0m[90m ts(6133): [0m'idx' is declared but its value is never read.
+
+[7m75[0m segments.forEach((seg, idx) => {
+[7m  [0m [93m                       ~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m198[0m:[93m11[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m198[0m           type="application/ld+json"
+[7m   [0m [93m          ~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m179[0m:[93m7[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m179[0m       type="application/ld+json"
+[7m   [0m [93m      ~~~~[0m
+[96msrc/layouts/Layout.astro[0m:[93m175[0m:[93m7[0m - [93mwarning[0m[90m astro(4000): [0mThis script will be treated as if it has the `is:inline` directive because it contains an attribute. Therefore, features that require processing (e.g. using TypeScript or npm packages in the script) are unavailable.
+
+See docs for more details: https://docs.astro.build/en/guides/client-side-scripts/#script-processing.
+
+Add the `is:inline` directive explicitly to silence this hint.
+
+[7m175[0m       type="application/ld+json"
+[7m   [0m [93m      ~~~~[0m
+
+[96msrc/pages/certifications/[slug].astro[0m:[93m3[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'getEntryBySlug' is declared but its value is never read.
+
+[7m3[0m import { getCollection, getEntryBySlug } from 'astro:content';
+[7m [0m [93m                        ~~~~~~~~~~~~~~[0m
+[96msrc/pages/certifications/[slug].astro[0m:[93m3[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'getEntryBySlug' is deprecated.
+
+[7m3[0m import { getCollection, getEntryBySlug } from 'astro:content';
+[7m [0m [93m                        ~~~~~~~~~~~~~~[0m
+
+[96msrc/pages/projects/[slug].astro[0m:[93m3[0m:[93m25[0m - [93mwarning[0m[90m ts(6133): [0m'getEntryBySlug' is declared but its value is never read.
+
+[7m3[0m import { getCollection, getEntryBySlug } from 'astro:content';
+[7m [0m [93m                        ~~~~~~~~~~~~~~[0m
+[96msrc/pages/projects/[slug].astro[0m:[93m3[0m:[93m25[0m - [93mwarning[0m[90m ts(6385): [0m'getEntryBySlug' is deprecated.
+
+[7m3[0m import { getCollection, getEntryBySlug } from 'astro:content';
+[7m [0m [93m                        ~~~~~~~~~~~~~~[0m
+
+Result (56 files): 
+- 2 errors
+- 0 warnings
+- 15 hints
+

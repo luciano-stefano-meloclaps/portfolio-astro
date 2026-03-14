@@ -66,7 +66,8 @@ import {
         <!-- Branding Stack -->
         <div class="flex flex-col gap-y-0">
           <h1
-            class="hero-name-container font-mono text-[10px] uppercase tracking-[0.8em] text-white md:text-xs 2xl:pl-1 2xl:text-left"
+            class="hero-name-container animate-hero-entrance font-mono text-[10px] uppercase tracking-[0.8em] text-white md:text-xs 2xl:pl-1 2xl:text-left"
+            style="animation-delay: 50ms;"
           >
             <span>LUCIANO STEFANO MELO CLAPS</span>
           </h1>
@@ -74,7 +75,8 @@ import {
           <div class="relative w-full 2xl:w-fit 2xl:text-left">
             <!-- CAPA DE ANIMACIÓN: Absoluta para no afectar al flujo ni al ancho -->
             <div
-              class="hero-title absolute inset-0 z-10 flex items-center justify-center drop-shadow-2xl 2xl:justify-start"
+              class="hero-title animate-hero-entrance absolute inset-0 z-10 flex items-center justify-center drop-shadow-2xl 2xl:justify-start"
+              style="animation-delay: 130ms;"
             >
               <AnimatedProfession />
             </div>
@@ -102,7 +104,8 @@ import {
 
         <!-- ACCIONES -->
         <div
-          class="hero-buttons mt-12 flex w-full flex-wrap items-center justify-center gap-3 md:mt-16 md:gap-4 2xl:justify-start"
+          class="hero-buttons animate-hero-entrance mt-12 flex w-full flex-wrap items-center justify-center gap-3 md:mt-16 md:gap-4 2xl:justify-start"
+          style="animation-delay: 290ms;"
         >
           <Button
             href="#projects"
@@ -150,7 +153,8 @@ import {
 
       <!-- BLOQUE 2: INFO MODULE (Locked to Right Column) -->
       <div
-        class="hero-info-module mt-2 flex flex-col items-center md:mt-12 lg:mt-0 lg:justify-self-end"
+        class="hero-info-module animate-hero-entrance mt-2 flex flex-col items-center md:mt-12 lg:mt-0 lg:justify-self-end"
+        style="animation-delay: 210ms;"
       >
         <div
           class="glass-panel card-border flex w-full max-w-[520px] flex-col justify-center gap-y-12 rounded-medium p-10 shadow-2xl backdrop-blur-3xl md:p-14"
@@ -209,39 +213,34 @@ import {
     --color-border: 145 148 151;
     --color-grid-line: 255 255 255;
   }
-</style>
 
-<script>
-  import gsap from 'gsap';
+  /* Animación Nativa para LCP (0 JavaScript Requerido) */
+  .animate-hero-entrance {
+    opacity: 0;
+    animation: heroSlideUpFade 0.8s cubic-bezier(0.165, 0.84, 0.44, 1) forwards;
+  }
 
-  function initHero() {
-    const prefersReducedMotion = window.matchMedia(
-      '(prefers-reduced-motion: reduce)'
-    ).matches;
-    const elements = [
-      '.hero-name-container',
-      '.hero-title',
-      '.hero-info-module',
-      '.hero-buttons',
-    ];
-
-    if (prefersReducedMotion) {
-      gsap.set(elements, { autoAlpha: 1, y: 0 });
-    } else {
-      // El navegador ya pintó el texto (LCP completado).
-      // Ahora GSAP lo toma y lo anima DESDE un estado oculto.
-      const tl = gsap.timeline({
-        defaults: { duration: 0.8, ease: 'power3.out' },
-      });
-
-      tl.from(elements, {
-        autoAlpha: 0,
-        y: 15,
-        stagger: 0.08,
-        delay: 0.05,
-      });
+  @media (prefers-reduced-motion: reduce) {
+    .animate-hero-entrance {
+      animation: none !important;
+      opacity: 1 !important;
+      transform: none !important;
     }
   }
 
-  document.addEventListener('astro:page-load', initHero);
+  @keyframes heroSlideUpFade {
+    0% {
+      opacity: 0;
+      transform: translateY(15px);
+    }
+    100% {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+</style>
+
+<script>
+  // Eliminamos GSAP para la entrada del LCP, liberando el hilo principal del renderizado inicial.
+  // Cualquier animación o interactividad futura independiente debe configurarse asíncronamente.
 </script>
