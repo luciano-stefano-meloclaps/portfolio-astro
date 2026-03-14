@@ -334,13 +334,17 @@ const INITIAL_CERT_LIMIT = 4;
     });
   }
 
-  document.addEventListener('DOMContentLoaded', () => {
-    initCertFilterBar();
-    initScrollAnimation();
-  });
-  document.addEventListener('astro:page-load', () => {
-    initCertFilterBar();
-  });
+  function initAll() {
+    // Aislar la ejecución de ScrollTrigger y filtrado del Critical Rendering Path
+    // para evitar Layout Thrashing (153ms detectados por Lighthouse) durante el First Paint.
+    setTimeout(() => {
+      initCertFilterBar();
+      initScrollAnimation();
+    }, 150);
+  }
+
+  document.addEventListener('astro:page-load', initAll);
+
   document.addEventListener('astro:before-swap', () => {
     if (filterTimeline) filterTimeline.kill();
   });
