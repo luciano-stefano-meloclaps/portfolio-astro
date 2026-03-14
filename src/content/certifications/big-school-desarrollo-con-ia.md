@@ -1,5 +1,5 @@
 ---
-title: 'Integracion de IA en el Desarrollo'
+title: 'Integración de IA en el Desarrollo'
 issuer: 'BIG School'
 category: 'Development'
 issueDate: 2026-03-13

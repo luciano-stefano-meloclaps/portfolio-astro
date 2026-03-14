@@ -97,8 +97,12 @@ const personSchema = {
     <meta name="theme-color" content="#000000" />
 
     <link rel="canonical" href={canonicalURL} />
+    
+    {/* Favicons (explicit for Google Search) */}
+    <link rel="icon" type="image/x-icon" href="/favicon.ico" />
     <link rel="icon" type="image/png" href="/favicon.png" sizes="32x32" />
     <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.png" />
 
     {/* preconnect for potential font/CDN usage */}
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -116,7 +120,12 @@ const personSchema = {
       canonical={canonicalURL}
       openGraph={{
         basic: { title, type: 'website', image: ogImageUrl, url: canonicalURL },
-        image: { alt: `${fullName} - Portfolio`, width: 1200, height: 630 },
+        image: { 
+          alt: `${fullName} - Portfolio`, 
+          width: 1200, 
+          height: 630,
+          type: 'image/jpeg' 
+        },
         optional: { siteName: `${fullName} Portfolio`, locale: 'es_AR' },
       }}
       twitter={{
@@ -129,6 +138,7 @@ const personSchema = {
         meta: [
           { name: 'robots', content: 'index, follow' },
           { name: 'googlebot', content: 'index, follow' },
+          { name: 'thumbnail', content: ogImageUrl },
         ],
       }}
     />
@@ -147,6 +157,7 @@ const personSchema = {
         '@type': 'WebSite',
         url: siteUrl,
         name: fullName,
+        image: ogImageUrl,
         potentialAction: {
           '@type': 'SearchAction',
           target: `${siteUrl}?s={search_term_string}`,

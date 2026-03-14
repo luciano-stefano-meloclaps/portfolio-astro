@@ -1,11 +1,19 @@
 # https://www.robotstxt.org/robotstxt.html
 
-# 1. Permitir que todos los bots (incluyendo IAs) rastreen el sitio
+# Optimized for https://meloclaps.com/
+
+# 1. Global rules for all crawlers (including AI bots)
 User-agent: *
 Allow: /
-
-# 2. Evitar que se indexen archivos de configuración o carpetas privadas (si las tuvieras)
 Disallow: /api/
+Disallow: /_astro/
+Allow: /_astro/*.webp
+Allow: /_astro/*.jpg
+Allow: /_astro/*.png
 
-# 3. Indicar la ubicación oficial del mapa del sitio (Sitemap)
-Sitemap: https://meloclaps.com/sitemap-index.xml
+# 2. Specific rule for Googlebot to prioritize indexing
+User-agent: Googlebot
+Allow: /
+
+# 3. Location of the Sitemap
+Sitemap: https://meloclaps.com/sitemap-index.xml
