@@ -24,13 +24,23 @@ const siteUrl = 'https://meloclaps.com';
 const {
   title = defaultTitle,
   description = defaultDescription,
-  image = '/og-image.jpg',
   canonicalURL = Astro.url.href,
   // allow passing a list of images to preload (absolute or relative URLs)
   preloadImages = [],
 } = Astro.props;
 
-const ogImageUrl = new URL(image, siteUrl).href;
+import { getImage } from 'astro:assets';
+import ogImageBase from '@/assets/images/og-image.jpg';
+
+// Procesamiento Dinámico de la Imagen OG (Garantiza 1200x630 y URLs absolutas)
+const optimizedOgImage = await getImage({
+  src: ogImageBase,
+  width: 1200,
+  height: 630,
+  format: 'jpg',
+  quality: 90
+});
+const ogImageUrl = new URL(optimizedOgImage.src, siteUrl).href;
 
 // hero image import can be used for preloading on the home page
 import heroImage from '@/assets/images/hero/hero10.jpg';
@@ -122,8 +132,8 @@ const personSchema = {
         basic: { title, type: 'website', image: ogImageUrl, url: canonicalURL },
         image: { 
           alt: `${fullName} - Portfolio`, 
-          width: 1200, 
-          height: 630,
+          width: optimizedOgImage.attributes.width, 
+          height: optimizedOgImage.attributes.height,
           type: 'image/jpeg' 
         },
         optional: { siteName: `${fullName} Portfolio`, locale: 'es_AR' },
