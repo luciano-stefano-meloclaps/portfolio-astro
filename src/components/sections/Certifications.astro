@@ -141,7 +141,7 @@ const INITIAL_CERT_LIMIT = 4;
     const counterText = document.getElementById('cert-filter-counter-text');
     const clearBtn = document.getElementById('cert-filter-clear-btn');
     const filterBtns = Array.from(
-      container.querySelectorAll('.cert-filter-btn')
+      container.querySelectorAll('.js-filter-chip, .cert-filter-btn')
     ) as HTMLElement[];
 
     // Paginación Refs
@@ -287,18 +287,24 @@ const INITIAL_CERT_LIMIT = 4;
     };
 
     filterBtns.forEach((btn) => {
-      btn.addEventListener('click', () => {
+      btn.addEventListener('click', (event) => {
+        event.preventDefault();
         const filterName = btn.getAttribute('data-filter-name');
         if (!filterName) return;
+
         filterBtns.forEach((b) => {
           b.setAttribute('data-filter-active', 'false');
           b.setAttribute('aria-pressed', 'false');
         });
+
         btn.setAttribute('data-filter-active', 'true');
         btn.setAttribute('aria-pressed', 'true');
         updateUI();
       });
     });
+
+    // Start with baseline UI state (all selected)
+    updateUI();
 
     if (clearBtn) {
       clearBtn.addEventListener('click', () => {
@@ -334,17 +340,13 @@ const INITIAL_CERT_LIMIT = 4;
     });
   }
 
-  function initAll() {
-    // Aislar la ejecución de ScrollTrigger y filtrado del Critical Rendering Path
-    // para evitar Layout Thrashing (153ms detectados por Lighthouse) durante el First Paint.
-    setTimeout(() => {
-      initCertFilterBar();
-      initScrollAnimation();
-    }, 150);
-  }
-
-  document.addEventListener('astro:page-load', initAll);
-
+  document.addEventListener('DOMContentLoaded', () => {
+    initCertFilterBar();
+    initScrollAnimation();
+  });
+  document.addEventListener('astro:page-load', () => {
+    initCertFilterBar();
+  });
   document.addEventListener('astro:before-swap', () => {
     if (filterTimeline) filterTimeline.kill();
   });
