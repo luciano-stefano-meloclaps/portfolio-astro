@@ -10,7 +10,7 @@ import Button from '@/components/ui/Button.astro';
 import { IconChevronDown } from '@tabler/icons-react';
 
 import { PROJECT_FILTERS } from '@/config/filter-list';
-import { normalizeTechName } from '@/lib/normalizeTech';
+import { normalizeTechName, normalizeTechArray } from '@/lib/normalizeTech';
 
 const allProjects = await getCollection('projects');
 allProjects.sort(
@@ -44,7 +44,7 @@ const INITIAL_LIMIT = 4;
     {
       activeFilters.length > 0 && (
         <div class="filter-bar-wrapper">
-          <FilterBar availableTechs={activeFilters} sectionId="projects" />
+          <FilterBar availableTechs={activeFilters} sectionId="projects" mode="multiple" />
         </div>
       )
     }
@@ -53,14 +53,14 @@ const INITIAL_LIMIT = 4;
       {
         allProjects.map((project, index) => {
           const isHiddenInitially = index >= INITIAL_LIMIT;
-          const techStackJson = JSON.stringify(project.data.techStack || []);
+          const techStackNormalized = normalizeTechArray(project.data.techStack || []);
 
           return (
             <div
               class={`project-item-wrapper transition-all duration-300 ${isHiddenInitially ? 'hidden-by-pagination hidden' : ''}`}
               data-index={index}
               data-project-slug={project.slug}
-              data-tech={techStackJson}
+              data-tech={techStackNormalized.join(',')}
             >
               <ProjectThumbnailCard project={project} index={index} />
             </div>
@@ -151,136 +151,17 @@ const INITIAL_LIMIT = 4;
 
 <script>
   import gsap from 'gsap';
-  import { normalizeTechArray } from '@/lib/normalizeTech';
+  import { initFilterAndPagination } from '@/lib/filterGridAnimator';
 
-  let filterTimeline: gsap.core.Timeline | null = null;
-
-  // Usamos el ID del wrapper del botón para el evento click
-  const loadMoreBtn = document.getElementById('load-more-projects-trigger');
-  const loadMoreContainer = document.getElementById(
-    'load-more-projects-container'
-  );
-  const STEP = 4;
-
-  // --- LÓGICA DE FILTRADO (Optimizada en velocidad) ---
-  function handleFilterChange(event: Event) {
-    const customEvent = event as CustomEvent;
-    const { activeTechs } = customEvent.detail as { activeTechs: string[] };
-    const wrappers = document.querySelectorAll('.project-item-wrapper');
-
-    if (filterTimeline) filterTimeline.kill();
-
-    filterTimeline = gsap.timeline({
-      defaults: { duration: 0.3, ease: 'power2.out' },
-    });
-
-    const wrappersToShow: HTMLElement[] = [];
-    const wrappersToHide: HTMLElement[] = [];
-
-    const isFiltering = activeTechs && activeTechs.length > 0;
-    if (loadMoreContainer) {
-      loadMoreContainer.style.display = isFiltering ? 'none' : '';
-      if (!isFiltering) {
-        const remaining = document.querySelectorAll(
-          '.hidden-by-pagination'
-        ).length;
-        loadMoreContainer.style.display = remaining > 0 ? '' : 'none';
-      }
-    }
-
-    wrappers.forEach((wrapper) => {
-      const el = wrapper as HTMLElement;
-      if (!isFiltering && el.classList.contains('hidden-by-pagination')) {
-        wrappersToHide.push(el);
-        return;
-      }
-
-      const techStr = el.getAttribute('data-tech');
-      let show = true;
-
-      if (isFiltering && techStr) {
-        try {
-          const projectTechs = JSON.parse(techStr);
-          const normalizedProjectTechs = normalizeTechArray(projectTechs);
-          show = activeTechs.every((tech: string) =>
-            normalizedProjectTechs.includes(tech)
-          );
-        } catch (e) {
-          show = true;
-        }
-      }
-
-      if (show) wrappersToShow.push(el);
-      else wrappersToHide.push(el);
-    });
-
-    wrappersToHide.forEach((el) => {
-      filterTimeline!.to(
-        el,
-        {
-          opacity: 0,
-          scale: 0.95, // Menos escala para que sea más sutil
-          duration: 0.15,
-          onComplete: () => {
-            el.classList.add('hidden');
-            el.style.display = 'none';
-          },
-        },
-        0
-      );
-    });
-
-    wrappersToShow.forEach((el) => {
-      el.classList.remove('hidden');
-      el.style.display = '';
-      filterTimeline!.to(el, { opacity: 1, scale: 1, duration: 0.2 }, 0);
-    });
-  }
-
-  // --- LÓGICA DE PAGINACIÓN (TURBO MODE) ---
-  loadMoreBtn?.addEventListener('click', () => {
-    const hiddenWrappers = document.querySelectorAll('.hidden-by-pagination');
-    let count = 0;
-
-    hiddenWrappers.forEach((wrapper) => {
-      if (count < STEP) {
-        wrapper.classList.remove('hidden', 'hidden-by-pagination');
-        const el = wrapper as HTMLElement;
-
-        // Estado inicial para animación
-        el.style.opacity = '0';
-        el.style.transform = 'translateY(15px)'; // Menos distancia
-        el.style.display = '';
-
-        gsap.to(el, {
-          opacity: 1,
-          y: 0,
-          duration: 0.3,
-          ease: 'power2.out',
-          delay: count * 0.05,
-        });
-
-        count++;
-      }
-    });
-
-    const remaining = document.querySelectorAll('.hidden-by-pagination').length;
-    if (remaining === 0 && loadMoreContainer) {
-      gsap.to(loadMoreContainer, {
-        opacity: 0,
-        height: 0,
-        margin: 0,
-        duration: 0.3,
-        onComplete: () => {
-          loadMoreContainer.style.display = 'none';
-        },
-      });
-    }
-  });
-
-  document.addEventListener('filter-changed', handleFilterChange);
-  document.addEventListener('astro:before-swap', () => {
-    if (filterTimeline) filterTimeline.kill();
+  initFilterAndPagination({
+    gridSelector: '#projects-grid',
+    itemSelector: '.project-item-wrapper',
+    loadMoreTriggerId: 'load-more-projects-trigger',
+    loadMoreContainerId: 'load-more-projects-container',
+    sectionId: 'projects',
+    step: 4,
+    paginationClass: 'hidden-by-pagination',
+    matchType: 'includes'
   });
 
   function initializeModal() {

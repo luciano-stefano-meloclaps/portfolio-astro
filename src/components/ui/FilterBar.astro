@@ -7,9 +7,10 @@ import { normalizeTechName } from '@/lib/normalizeTech';
 interface Props {
   availableTechs: string[];
   sectionId?: string;
+  mode?: 'single' | 'multiple';
 }
 
-const { availableTechs, sectionId = 'projects' } = Astro.props;
+const { availableTechs, sectionId = 'projects', mode = 'multiple' } = Astro.props;
 ---
 
 <div class="filter-bar-wrapper space-y-4">
@@ -20,14 +21,30 @@ const { availableTechs, sectionId = 'projects' } = Astro.props;
   </label>
 
   <div
-    id="filter-container"
+    id={`filter-container-${sectionId}`}
     class="filter-chips-container flex flex-wrap gap-2 sm:gap-3"
     role="group"
     data-filter-section={sectionId}
+    data-filter-mode={mode}
   >
     {
+      mode === 'single' && (
+        <TechChip
+          Icon={null}
+          name="all"
+          label="Todos"
+          mode="filter"
+          data-filter-name="all"
+          data-filter-label="Todos"
+          data-filter-active="true"
+          aria-pressed="true"
+        />
+      )
+    }
+    {
       availableTechs.map((tech) => {
-        const normalizedTech = normalizeTechName(tech);
+        // En single mode forzamos a minuscula plana, en multiple usamos el normalizador
+        const normalizedTech = mode === 'single' ? tech.toLowerCase() : normalizeTechName(tech);
         const Icon = techIconMap[normalizedTech] || null;
         const displayLabel = normalizedTech === 'dotnet' ? '.NET' : tech;
 
@@ -48,24 +65,29 @@ const { availableTechs, sectionId = 'projects' } = Astro.props;
   </div>
 
   <div
-    class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between"
+    class="flex flex-col items-start gap-4 pt-2"
   >
-    <span
-      id="filter-counter-text"
-      class="font-mono text-xs uppercase tracking-wide text-text-secondary"
-    >
-      Mostrando todos los proyectos
-    </span>
+    <div class="flex items-center gap-2">
+      <span
+        id={`filter-counter-text-${sectionId}`}
+        class="font-mono text-xs font-semibold uppercase tracking-wide text-text-secondary transition-colors duration-300 flex flex-wrap items-center gap-2"
+      >
+        Mostrando todos
+      </span>
+    </div>
+    
     <button
-      id="filter-clear-btn"
-      class="hidden cursor-pointer font-mono text-xs uppercase tracking-wide text-text-secondary hover:text-text-primary"
+      id={`filter-clear-btn-${sectionId}`}
+      class="hidden items-center justify-center gap-1.5 rounded-small border border-border/50 bg-background/20 backdrop-blur-md px-4 py-2 font-mono text-xs uppercase tracking-wide text-text-secondary shadow-sm transition-all duration-300 hover:border-text-primary/40 hover:bg-border/30 hover:text-text-primary active:scale-95"
     >
+      <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none"><path d="M18 6l-12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/><path d="M6 6l12 12" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
       Limpiar filtros
     </button>
   </div>
+  
   <div
-    class="h-px bg-border/50 opacity-0 transition-opacity duration-300"
-    id="filter-line"
+    class="h-px bg-border/50 opacity-0 transition-opacity duration-300 mt-4"
+    id={`filter-line-${sectionId}`}
   >
   </div>
 </div>
@@ -75,7 +97,7 @@ const { availableTechs, sectionId = 'projects' } = Astro.props;
     position: relative;
     z-index: 10;
   }
-  #filter-line.active {
+  .filter-line-active {
     opacity: 1;
     background: linear-gradient(
       90deg,
@@ -84,81 +106,151 @@ const { availableTechs, sectionId = 'projects' } = Astro.props;
       transparent
     );
   }
+  
+  .filter-counter-active {
+    color: var(--color-text-primary);
+  }
+  
+  /* LUZ DE ESTADO DEL FILTRO */
+  :global(.active-filter-dot) {
+    animation: filterPulse 2.5s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes filterPulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.3; transform: scale(0.85); box-shadow: none; }
+  }
 </style>
 
 <script>
-  import { normalizeTechName } from '@/lib/normalizeTech';
+  function initAllFilterBars() {
+    const containers = document.querySelectorAll('.filter-chips-container');
+    
+    containers.forEach((containerElement) => {
+      const container = containerElement as HTMLElement;
+      // Previene doble asignación
+      if (container.hasAttribute('data-initialized')) return;
+      container.setAttribute('data-initialized', 'true');
 
-  function initFilterBar() {
-    const container = document.getElementById('filter-container');
-    if (!container) return;
+      const sectionId = container.getAttribute('data-filter-section');
+      const mode = container.getAttribute('data-filter-mode'); // 'single' | 'multiple'
+      
+      const clearBtn = document.getElementById(`filter-clear-btn-${sectionId}`);
+      const filterLine = document.getElementById(`filter-line-${sectionId}`);
+      const counterText = document.getElementById(`filter-counter-text-${sectionId}`);
 
-    const sectionId = container.getAttribute('data-filter-section');
-    const clearBtn = document.getElementById('filter-clear-btn');
-    const filterLine = document.getElementById('filter-line');
-    const counterText = document.getElementById('filter-counter-text');
+      const updateUI = () => {
+        const activeChips = container.querySelectorAll(
+          '.js-filter-chip[data-filter-active="true"]'
+        );
 
-    const updateUI = () => {
-      // Usamos la clase segura js-filter-chip
-      const activeChips = container.querySelectorAll(
-        '.js-filter-chip[data-filter-active="true"]'
-      );
-
-      if (counterText) {
-        if (activeChips.length === 0) {
-          counterText.textContent = 'Mostrando todos los proyectos';
-          filterLine?.classList.remove('active');
-        } else {
-          const names = Array.from(activeChips)
-            .map((c) => c.getAttribute('data-filter-label')?.toUpperCase())
-            .join(', ');
-          counterText.textContent = `FILTROS ACTIVOS: ${names}`;
-          filterLine?.classList.add('active');
+        if (counterText) {
+          if (activeChips.length === 0 || (mode === 'single' && activeChips[0]?.getAttribute('data-filter-name') === 'all')) {
+            counterText.innerHTML = 'Mostrando todos';
+            counterText.classList.remove('filter-counter-active');
+            filterLine?.classList.remove('filter-line-active');
+            clearBtn?.classList.add('hidden');
+            clearBtn?.classList.remove('flex');
+          } else {
+            // Utilizamos el diseño de StatusBadge (rounded-small, text-[10px], font-bold)
+            // Lógica LED: En Dark (texto principal es claro) usamos slate-900 (light var). En Light (texto oscuro) usamos dark var (white).
+            // Lo resolvemos más fácil: bg-text-primary se invierte solo según el modo nativo, pero si forzamos inversión usamos Tailwind dark:bg-white bg-slate-900.
+            const badgesHTML = Array.from(activeChips)
+              .map((c) => `
+                <span class="inline-flex cursor-default items-center justify-center gap-x-1.5 rounded-small border border-slate-500/20 bg-slate-500/10 px-3 py-1 w-fit backdrop-blur-md text-[10px] font-bold uppercase tracking-wider text-text-primary transition-all duration-300">
+                  <span class="active-filter-dot block h-2 w-2 shrink-0 rounded-full bg-slate-900 dark:bg-white shadow-[0_0_8px_rgba(15,23,42,0.8)] dark:shadow-[0_0_8px_rgba(255,255,255,0.8)]"></span>
+                  ${c.getAttribute('data-filter-label')?.toUpperCase()}
+                </span>
+              `)
+              .join('');
+              
+            const prefixText = mode === 'single' ? 'FILTRO ACTIVO:' : 'FILTROS ACTIVOS:';
+            counterText.innerHTML = `<span class="mr-1">${prefixText}</span> <div class="flex flex-wrap items-center gap-2">${badgesHTML}</div>`;
+            
+            counterText.classList.add('filter-counter-active');
+            filterLine?.classList.add('filter-line-active');
+            clearBtn?.classList.remove('hidden');
+            clearBtn?.classList.add('flex');
+          }
         }
-      }
 
-      clearBtn?.classList.toggle('hidden', activeChips.length === 0);
+        const activeNames = Array.from(activeChips).map(
+          (c) => c.getAttribute('data-filter-name') || ''
+        );
 
-      const activeNames = Array.from(activeChips).map(
-        (c) => c.getAttribute('data-filter-name') || ''
-      );
+        document.dispatchEvent(
+          new CustomEvent('filter-changed', {
+            detail: { activeTechs: activeNames, section: sectionId },
+          })
+        );
+      };
 
-      document.dispatchEvent(
-        new CustomEvent('filter-changed', {
-          detail: { activeTechs: activeNames, section: sectionId },
-        })
-      );
-    };
+      container.addEventListener('click', (e) => {
+        const target = e.target as HTMLElement;
+        const chip = target.closest('.js-filter-chip');
 
-    container.addEventListener('click', (e) => {
-      const target = e.target as HTMLElement;
-      // Buscamos la clase segura
-      const chip = target.closest('.js-filter-chip');
+        if (!chip) return;
 
-      if (!chip) return;
+        const isActive = chip.getAttribute('data-filter-active') === 'true';
+        const filterName = chip.getAttribute('data-filter-name');
 
-      const isActive = chip.getAttribute('data-filter-active') === 'true';
+        if (mode === 'single') {
+          if (isActive && filterName !== 'all') {
+             const allBtn = container.querySelector('[data-filter-name="all"]');
+             container.querySelectorAll('.js-filter-chip').forEach((c) => {
+               c.setAttribute('data-filter-active', 'false');
+               c.setAttribute('aria-pressed', 'false');
+             });
+             if (allBtn) {
+               allBtn.setAttribute('data-filter-active', 'true');
+               allBtn.setAttribute('aria-pressed', 'true');
+             }
+          } else {
+             container.querySelectorAll('.js-filter-chip').forEach((c) => {
+               c.setAttribute('data-filter-active', 'false');
+               c.setAttribute('aria-pressed', 'false');
+             });
+             chip.setAttribute('data-filter-active', 'true');
+             chip.setAttribute('aria-pressed', 'true');
+          }
+        } else {
+          if (target.closest('[data-remove-x]')) {
+            chip.setAttribute('data-filter-active', 'false');
+            chip.setAttribute('aria-pressed', 'false');
+          } else {
+            chip.setAttribute('data-filter-active', String(!isActive));
+            chip.setAttribute('aria-pressed', String(!isActive));
+          }
+        }
 
-      if (target.closest('[data-remove-x]')) {
-        chip.setAttribute('data-filter-active', 'false');
-        chip.setAttribute('aria-pressed', 'false');
-      } else {
-        chip.setAttribute('data-filter-active', String(!isActive));
-        chip.setAttribute('aria-pressed', String(!isActive));
-      }
-
-      updateUI();
-    });
-
-    clearBtn?.addEventListener('click', () => {
-      container.querySelectorAll('.js-filter-chip').forEach((c) => {
-        c.setAttribute('data-filter-active', 'false');
-        c.setAttribute('aria-pressed', 'false');
+        updateUI();
       });
-      updateUI();
+
+      clearBtn?.addEventListener('click', () => {
+        if (mode === 'single') {
+           const allBtn = container.querySelector('[data-filter-name="all"]');
+           container.querySelectorAll('.js-filter-chip').forEach((c) => {
+             c.setAttribute('data-filter-active', 'false');
+             c.setAttribute('aria-pressed', 'false');
+           });
+           if (allBtn) {
+             allBtn.setAttribute('data-filter-active', 'true');
+             allBtn.setAttribute('aria-pressed', 'true');
+           }
+        } else {
+           container.querySelectorAll('.js-filter-chip').forEach((c) => {
+             c.setAttribute('data-filter-active', 'false');
+             c.setAttribute('aria-pressed', 'false');
+           });
+        }
+        updateUI();
+      });
+      
+      // Request animation frame gives Astro time to render the full DOM initially
+      requestAnimationFrame(() => updateUI());
     });
   }
 
-  document.addEventListener('astro:page-load', initFilterBar);
-  document.addEventListener('DOMContentLoaded', initFilterBar);
+  document.addEventListener('astro:page-load', initAllFilterBars);
+  document.addEventListener('DOMContentLoaded', initAllFilterBars);
 </script>
