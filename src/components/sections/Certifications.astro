@@ -6,7 +6,7 @@ import SectionTitle from '@/components/ui/SectionTitle.astro';
 import TechChip from '@/components/ui/TechChip.astro';
 import Button from '@/components/ui/Button.astro'; // ⚡ Import
 import { IconChevronDown } from '@tabler/icons-react';
-import { techIconMap } from '@/config/tech-icon-map';
+import FilterBar from '@/components/ui/FilterBar.astro';
 
 const allCertifications = await getCollection('certifications');
 allCertifications.sort(
@@ -32,63 +32,8 @@ const INITIAL_CERT_LIMIT = 4;
 
     {
       usedCategories.length > 0 && (
-        <div class="filter-bar-wrapper space-y-4">
-          <label class="block font-mono text-sm font-light uppercase tracking-normal text-text-secondary">
-            Filtrar por:
-          </label>
-          <div
-            id="cert-filter-container"
-            class="filter-chips-container flex flex-wrap gap-2 sm:gap-3"
-            role="group"
-            data-filter-section="certifications"
-          >
-            <TechChip
-              Icon={null}
-              name="all"
-              label="Todos"
-              mode="filter"
-              data-filter-name="all"
-              data-filter-label="Todos"
-              data-filter-active="true"
-              aria-pressed="true"
-              class="cert-filter-btn"
-            />
-            {usedCategories.map((category) => {
-              const normalizedCategory = category.toLowerCase();
-              const Icon = techIconMap[normalizedCategory] || null;
-              return (
-                <TechChip
-                  Icon={Icon}
-                  name={normalizedCategory}
-                  label={category}
-                  mode="filter"
-                  data-filter-name={normalizedCategory}
-                  data-filter-label={category}
-                  data-filter-active="false"
-                  aria-pressed="false"
-                  class="cert-filter-btn"
-                />
-              );
-            })}
-          </div>
-          <div class="flex flex-col gap-2 sm:flex-row sm:items-center sm:justify-between">
-            <span
-              id="cert-filter-counter-text"
-              class="font-mono text-xs uppercase tracking-wide text-text-secondary"
-            >
-              Mostrando todas las certificaciones
-            </span>
-            <button
-              id="cert-filter-clear-btn"
-              class="hidden cursor-pointer font-mono text-xs uppercase tracking-wide text-text-secondary hover:text-text-primary"
-            >
-              Limpiar filtros
-            </button>
-          </div>
-          <div
-            class="h-px bg-border/50 opacity-0 transition-opacity duration-300"
-            id="cert-filter-line"
-          />
+        <div class="filter-bar-wrapper">
+          <FilterBar availableTechs={usedCategories} sectionId="certifications" mode="single" />
         </div>
       )
     }
@@ -129,192 +74,20 @@ const INITIAL_CERT_LIMIT = 4;
 <script>
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
+  import { initFilterAndPagination } from '@/lib/filterGridAnimator';
+  
   gsap.registerPlugin(ScrollTrigger);
 
-  let filterTimeline: gsap.core.Timeline | null = null;
-
-  function initCertFilterBar() {
-    const container = document.getElementById('cert-filter-container');
-    if (!container) return;
-
-    const filterLine = document.getElementById('cert-filter-line');
-    const counterText = document.getElementById('cert-filter-counter-text');
-    const clearBtn = document.getElementById('cert-filter-clear-btn');
-    const filterBtns = Array.from(
-      container.querySelectorAll('.js-filter-chip, .cert-filter-btn')
-    ) as HTMLElement[];
-
-    // Paginación Refs
-    const loadMoreBtn = document.getElementById('load-more-certs-trigger');
-    const loadMoreContainer = document.getElementById(
-      'load-more-certs-container'
-    );
-    const STEP = 4;
-
-    function applyFilter(activeFilterName: string) {
-      const wrappers = Array.from(
-        document.querySelectorAll('.certification-card-wrapper')
-      ) as HTMLElement[];
-
-      if (filterTimeline) filterTimeline.kill();
-      // ⚡ ORION SPEED: 0.2s
-      filterTimeline = gsap.timeline({
-        defaults: { duration: 0.2, ease: 'power2.out' },
-      });
-
-      const wrappersToShow: HTMLElement[] = [];
-      const wrappersToHide: HTMLElement[] = [];
-
-      if (loadMoreContainer) {
-        if (activeFilterName !== 'all') {
-          loadMoreContainer.style.display = 'none';
-        } else {
-          const remaining = document.querySelectorAll(
-            '.hidden-by-cert-pagination'
-          ).length;
-          loadMoreContainer.style.display = remaining > 0 ? '' : 'none';
-        }
-      }
-
-      wrappers.forEach((wrapper) => {
-        if (
-          activeFilterName === 'all' &&
-          wrapper.classList.contains('hidden-by-cert-pagination')
-        ) {
-          wrappersToHide.push(wrapper);
-          return;
-        }
-
-        const cardCategory = wrapper.getAttribute('data-category') || '';
-        const show =
-          activeFilterName === 'all' ||
-          cardCategory.toLowerCase() === activeFilterName;
-
-        if (show) wrappersToShow.push(wrapper);
-        else wrappersToHide.push(wrapper);
-      });
-
-      wrappersToHide.forEach((el) => {
-        filterTimeline!.to(
-          el,
-          {
-            opacity: 0,
-            scale: 0.95,
-            duration: 0.15,
-            onComplete: () => {
-              el.classList.add('hidden');
-              el.style.display = 'none';
-            },
-          },
-          0
-        );
-      });
-      wrappersToShow.forEach((el) => {
-        el.classList.remove('hidden');
-        el.style.display = '';
-        filterTimeline!.to(el, { opacity: 1, scale: 1, duration: 0.2 }, 0);
-      });
-
-      if (filterLine) {
-        gsap.to(filterLine, {
-          opacity: activeFilterName !== 'all' ? 1 : 0,
-          duration: 0.3,
-        });
-      }
-    }
-
-    // --- LÓGICA VER MÁS (TURBO) ---
-    loadMoreBtn?.addEventListener('click', () => {
-      const hiddenWrappers = document.querySelectorAll(
-        '.hidden-by-cert-pagination'
-      );
-      let count = 0;
-      hiddenWrappers.forEach((wrapper) => {
-        if (count < STEP) {
-          wrapper.classList.remove('hidden', 'hidden-by-cert-pagination');
-          const el = wrapper as HTMLElement;
-          el.style.opacity = '0';
-          el.style.transform = 'translateY(15px)';
-          el.style.display = '';
-
-          gsap.to(el, {
-            opacity: 1,
-            y: 0,
-            duration: 0.3,
-            ease: 'power2.out',
-            delay: count * 0.05,
-          });
-          count++;
-        }
-      });
-      if (
-        document.querySelectorAll('.hidden-by-cert-pagination').length === 0 &&
-        loadMoreContainer
-      ) {
-        gsap.to(loadMoreContainer, {
-          opacity: 0,
-          height: 0,
-          margin: 0,
-          duration: 0.3,
-          onComplete: () => {
-            loadMoreContainer.style.display = 'none';
-          },
-        });
-      }
-    });
-
-    // --- ACTUALIZAR UI ---
-    const updateUI = () => {
-      const activeBtnElement = container!.querySelector(
-        '[data-filter-active="true"]'
-      );
-      const activeFilterName =
-        activeBtnElement?.getAttribute('data-filter-name') || 'all';
-
-      if (counterText) {
-        if (activeFilterName === 'all')
-          counterText.textContent = 'Mostrando todas las certificaciones';
-        else {
-          const activeLabel =
-            activeBtnElement?.getAttribute('data-filter-label') ||
-            activeFilterName;
-          counterText.textContent = `FILTRO ACTIVO: ${activeLabel}`;
-        }
-      }
-      if (clearBtn)
-        clearBtn.classList.toggle('hidden', activeFilterName === 'all');
-      applyFilter(activeFilterName);
-    };
-
-    filterBtns.forEach((btn) => {
-      btn.addEventListener('click', (event) => {
-        event.preventDefault();
-        const filterName = btn.getAttribute('data-filter-name');
-        if (!filterName) return;
-
-        filterBtns.forEach((b) => {
-          b.setAttribute('data-filter-active', 'false');
-          b.setAttribute('aria-pressed', 'false');
-        });
-
-        btn.setAttribute('data-filter-active', 'true');
-        btn.setAttribute('aria-pressed', 'true');
-        updateUI();
-      });
-    });
-
-    // Start with baseline UI state (all selected)
-    updateUI();
-
-    if (clearBtn) {
-      clearBtn.addEventListener('click', () => {
-        const allBtn = filterBtns.find(
-          (btn) => btn.getAttribute('data-filter-name') === 'all'
-        );
-        if (allBtn) allBtn.click();
-      });
-    }
-  }
+  initFilterAndPagination({
+    gridSelector: '#certifications-grid',
+    itemSelector: '.certification-card-wrapper',
+    loadMoreTriggerId: 'load-more-certs-trigger',
+    loadMoreContainerId: 'load-more-certs-container',
+    sectionId: 'certifications',
+    step: 4,
+    paginationClass: 'hidden-by-cert-pagination',
+    matchType: 'exact'
+  });
 
   // --- SCROLL ANIMATION (TURBO) ---
   function initScrollAnimation() {
@@ -341,13 +114,6 @@ const INITIAL_CERT_LIMIT = 4;
   }
 
   document.addEventListener('DOMContentLoaded', () => {
-    initCertFilterBar();
     initScrollAnimation();
-  });
-  document.addEventListener('astro:page-load', () => {
-    initCertFilterBar();
-  });
-  document.addEventListener('astro:before-swap', () => {
-    if (filterTimeline) filterTimeline.kill();
   });
 </script>
