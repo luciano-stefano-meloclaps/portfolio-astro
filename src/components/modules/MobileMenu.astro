@@ -1,6 +1,7 @@
 ---
 // src/components/modules/MobileMenu.astro
 import Links from '@/components/ui/Links.astro';
+import ThemeToggle from '@/components/modules/ThemeToggle.astro';
 import { IconX } from '@tabler/icons-react';
 ---
 
@@ -43,6 +44,17 @@ import { IconX } from '@tabler/icons-react';
         ulClass="flex-col !gap-y-6 nav-links-mobile w-full text-left !items-start"
         aClass="!text-3xl !font-light tracking-tight !text-text-navbar hover:text-accent-magenta transition-colors"
       />
+    </div>
+
+    <div class="decorative-elem mb-8 mt-12 w-full border-t border-text-primary/10"></div>
+
+    <h4 class="decorative-elem mb-6 font-mono text-xs uppercase tracking-widest text-text-secondary">
+      Configuración
+    </h4>
+
+    <div class="decorative-elem pointer-events-auto flex items-center gap-4 rounded-small border border-text-primary/5 bg-text-primary/5 p-4 transition-colors hover:bg-text-primary/10">
+      <span class="font-mono text-sm text-text-secondary">Cambiar Tema</span>
+      <ThemeToggle class="text-text-navbar" />
     </div>
   </div>
 </div>

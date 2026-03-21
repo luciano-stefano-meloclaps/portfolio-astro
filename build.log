@@ -1,261 +1,262 @@
 
-> portfolio-astro@0.0.1 build D:\Portfolios\portfolioLanding
+> portfolio-astro@0.0.1 build
 > astro build
 
 [baseline-browser-mapping] The data in this module is over two months old.  To ensure accurate Baseline data, please update: `npm i baseline-browser-mapping@latest -D`
-[2m12:48:28[22m [34m[content][39m Syncing content
-[2m12:48:28[22m [34m[content][39m Synced content
-[2m12:48:28[22m [34m[types][39m Generated [2m487ms[22m
-[2m12:48:28[22m [34m[build][39m output: [34m"static"[39m
-[2m12:48:28[22m [34m[build][39m mode: [34m"server"[39m
-[2m12:48:28[22m [34m[build][39m directory: [34mD:\Portfolios\portfolioLanding\dist\[39m
-[2m12:48:28[22m [34m[build][39m adapter: [32m@astrojs/vercel[39m
-[2m12:48:28[22m [34m[build][39m Collecting build info...
-[2m12:48:28[22m [34m[build][39m [32mÔ£ô Completed in 595ms.[39m
-[2m12:48:28[22m [34m[build][39m Building server entrypoints...
-[2m12:48:32[22m [34m[vite][39m [32mÔ£ô built in 3.37s[39m
-[2m12:48:32[22m [34m[build][39m [32mÔ£ô Completed in 3.43s.[39m
+[2m20:21:10[22m [34m[content][39m Syncing content
+[2m20:21:10[22m [34m[content][39m Synced content
+[2m20:21:10[22m [34m[types][39m Generated [2m473ms[22m
+[2m20:21:10[22m [34m[build][39m output: [34m"static"[39m
+[2m20:21:10[22m [34m[build][39m mode: [34m"server"[39m
+[2m20:21:10[22m [34m[build][39m directory: [34mD:\Portfolios\portfolioLanding\dist\[39m
+[2m20:21:10[22m [34m[build][39m adapter: [32m@astrojs/vercel[39m
+[2m20:21:10[22m [34m[build][39m Collecting build info...
+[2m20:21:10[22m [34m[build][39m [32mÔ£ô Completed in 584ms.[39m
+[2m20:21:10[22m [34m[build][39m Building server entrypoints...
+[2m20:21:14[22m [34m[vite][39m [32mÔ£ô built in 3.66s[39m
+[2m20:21:14[22m [34m[build][39m [32mÔ£ô Completed in 3.70s.[39m
 
 [42m[30m building client (vite) [39m[49m
-[2m12:48:32[22m [34m[vite][39m transforming...
-[2m12:48:33[22m [34m[vite][39m [32mÔ£ô[39m 49 modules transformed.
-[2m12:48:33[22m [34m[vite][39m rendering chunks...
-[2m12:48:33[22m [34m[vite][39m computing gzip size...
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Hero.astro_astro_type_script_index_0_lang.CpiPQm58.js                [39m[1m[2m  0.38 kB[22m[1m[22m[2m Ôöé gzip:  0.29 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Contact.astro_astro_type_script_index_0_lang.CzXwLlnZ.js             [39m[1m[2m  0.50 kB[22m[1m[22m[2m Ôöé gzip:  0.34 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/animations.Db0jffCm.js                                               [39m[1m[2m  0.54 kB[22m[1m[22m[2m Ôöé gzip:  0.40 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Career.astro_astro_type_script_index_0_lang.C3YT2rE-.js              [39m[1m[2m  0.66 kB[22m[1m[22m[2m Ôöé gzip:  0.41 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/TerminalHeader.astro_astro_type_script_index_0_lang.irX2yBSK.js      [39m[1m[2m  0.72 kB[22m[1m[22m[2m Ôöé gzip:  0.41 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/CertificationCard.astro_astro_type_script_index_0_lang.BBJLwCxt.js   [39m[1m[2m  0.78 kB[22m[1m[22m[2m Ôöé gzip:  0.41 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Navbar.astro_astro_type_script_index_0_lang.Dzpsl4Vq.js              [39m[1m[2m  0.82 kB[22m[1m[22m[2m Ôöé gzip:  0.44 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ExperienceCard.astro_astro_type_script_index_0_lang.CsdkyyFp.js      [39m[1m[2m  0.85 kB[22m[1m[22m[2m Ôöé gzip:  0.44 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/SectionTitle.astro_astro_type_script_index_0_lang.DxWrcsOk.js        [39m[1m[2m  0.94 kB[22m[1m[22m[2m Ôöé gzip:  0.57 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/AnimatedProfession.astro_astro_type_script_index_0_lang.cpofU0ak.js  [39m[1m[2m  0.98 kB[22m[1m[22m[2m Ôöé gzip:  0.54 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Footer.astro_astro_type_script_index_0_lang.CPmbS2eC.js              [39m[1m[2m  1.08 kB[22m[1m[22m[2m Ôöé gzip:  0.61 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ThemeToggle.astro_astro_type_script_index_0_lang.Cg6ExLoZ.js         [39m[1m[2m  1.19 kB[22m[1m[22m[2m Ôöé gzip:  0.51 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ProjectCard.astro_astro_type_script_index_0_lang.6sB6i7ba.js         [39m[1m[2m  1.31 kB[22m[1m[22m[2m Ôöé gzip:  0.62 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/MobileMenu.astro_astro_type_script_index_0_lang.xsNqf4C1.js          [39m[1m[2m  1.40 kB[22m[1m[22m[2m Ôöé gzip:  0.65 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Certifications.astro_astro_type_script_index_0_lang.D1M4iA31.js      [39m[1m[2m  3.02 kB[22m[1m[22m[2m Ôöé gzip:  1.17 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Projects.astro_astro_type_script_index_0_lang.CYoE2yum.js            [39m[1m[2m  3.51 kB[22m[1m[22m[2m Ôöé gzip:  1.40 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ContactForm.astro_astro_type_script_index_0_lang.Cifm9vXP.js         [39m[1m[2m  4.12 kB[22m[1m[22m[2m Ôöé gzip:  1.63 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/TextPlugin.CTeI2V1w.js                                               [39m[1m[2m 10.33 kB[22m[1m[22m[2m Ôöé gzip:  3.43 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ScrollTrigger.BWsqEc1I.js                                            [39m[1m[2m 43.55 kB[22m[1m[22m[2m Ôöé gzip: 18.11 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/index.DKtf60Sy.js                                                    [39m[1m[2m 69.98 kB[22m[1m[22m[2m Ôöé gzip: 27.68 kB[22m
-[2m12:48:33[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/client.Bx7k8SOM.js                                                   [39m[1m[2m194.63 kB[22m[1m[22m[2m Ôöé gzip: 60.99 kB[22m
-[2m12:48:33[22m [34m[vite][39m [32mÔ£ô built in 1.22s[39m
+[2m20:21:14[22m [34m[vite][39m transforming...
+[2m20:21:15[22m [34m[vite][39m [32mÔ£ô[39m 49 modules transformed.
+[33m[1m20:21:15[22m [WARN] [vite][39m [33mGenerated an empty chunk: "Hero.astro_astro_type_script_index_0_lang".[39m
+[2m20:21:15[22m [34m[vite][39m rendering chunks...
+[2m20:21:15[22m [34m[vite][39m computing gzip size...
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Contact.astro_astro_type_script_index_0_lang.CzXwLlnZ.js             [39m[1m[2m  0.50 kB[22m[1m[22m[2m Ôöé gzip:  0.34 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/animations.Db0jffCm.js                                               [39m[1m[2m  0.54 kB[22m[1m[22m[2m Ôöé gzip:  0.40 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Career.astro_astro_type_script_index_0_lang.C3YT2rE-.js              [39m[1m[2m  0.66 kB[22m[1m[22m[2m Ôöé gzip:  0.41 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/TerminalHeader.astro_astro_type_script_index_0_lang.irX2yBSK.js      [39m[1m[2m  0.72 kB[22m[1m[22m[2m Ôöé gzip:  0.41 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/CertificationCard.astro_astro_type_script_index_0_lang.BBJLwCxt.js   [39m[1m[2m  0.78 kB[22m[1m[22m[2m Ôöé gzip:  0.41 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Certifications.astro_astro_type_script_index_0_lang.CjnHUYXG.js      [39m[1m[2m  0.80 kB[22m[1m[22m[2m Ôöé gzip:  0.48 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Navbar.astro_astro_type_script_index_0_lang.Dzpsl4Vq.js              [39m[1m[2m  0.82 kB[22m[1m[22m[2m Ôöé gzip:  0.44 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ExperienceCard.astro_astro_type_script_index_0_lang.CsdkyyFp.js      [39m[1m[2m  0.85 kB[22m[1m[22m[2m Ôöé gzip:  0.44 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/SectionTitle.astro_astro_type_script_index_0_lang.DxWrcsOk.js        [39m[1m[2m  0.94 kB[22m[1m[22m[2m Ôöé gzip:  0.57 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/AnimatedProfession.astro_astro_type_script_index_0_lang.cpofU0ak.js  [39m[1m[2m  0.98 kB[22m[1m[22m[2m Ôöé gzip:  0.54 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Footer.astro_astro_type_script_index_0_lang.CPmbS2eC.js              [39m[1m[2m  1.08 kB[22m[1m[22m[2m Ôöé gzip:  0.61 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ThemeToggle.astro_astro_type_script_index_0_lang.Cg6ExLoZ.js         [39m[1m[2m  1.19 kB[22m[1m[22m[2m Ôöé gzip:  0.51 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ProjectCard.astro_astro_type_script_index_0_lang.6sB6i7ba.js         [39m[1m[2m  1.31 kB[22m[1m[22m[2m Ôöé gzip:  0.62 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/MobileMenu.astro_astro_type_script_index_0_lang.xsNqf4C1.js          [39m[1m[2m  1.40 kB[22m[1m[22m[2m Ôöé gzip:  0.65 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/filterGridAnimator.DeJRve5w.js                                       [39m[1m[2m  1.78 kB[22m[1m[22m[2m Ôöé gzip:  0.87 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/Projects.astro_astro_type_script_index_0_lang.DUqrxYu0.js            [39m[1m[2m  1.81 kB[22m[1m[22m[2m Ôöé gzip:  0.81 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ContactForm.astro_astro_type_script_index_0_lang.Cifm9vXP.js         [39m[1m[2m  4.12 kB[22m[1m[22m[2m Ôöé gzip:  1.63 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/TextPlugin.CTeI2V1w.js                                               [39m[1m[2m 10.33 kB[22m[1m[22m[2m Ôöé gzip:  3.43 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/ScrollTrigger.BWsqEc1I.js                                            [39m[1m[2m 43.55 kB[22m[1m[22m[2m Ôöé gzip: 18.11 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/index.DKtf60Sy.js                                                    [39m[1m[2m 69.98 kB[22m[1m[22m[2m Ôöé gzip: 27.68 kB[22m
+[2m20:21:15[22m [34m[vite][39m [2mdist/client/[22m[36m_astro/client.Bx7k8SOM.js                                                   [39m[1m[2m194.63 kB[22m[1m[22m[2m Ôöé gzip: 60.99 kB[22m
+[2m20:21:15[22m [34m[vite][39m [32mÔ£ô built in 1.03s[39m
 
 [42m[30m prerendering static routes [39m[49m
-[2m12:48:33[22m [32mÔûÂ[39m src/pages/certifications/[slug].astro
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/alura-inmersion-ia/index.html[22m [2m(+41ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/aws-cloud-foundations/index.html[22m [2m(+10ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/aws-generative-ai/index.html[22m [2m(+8ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/big-school-ia/index.html[22m [2m(+5ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/coderhouse-desarrollo-web/index.html[22m [2m(+8ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/coderhouse-ux-ui/index.html[22m [2m(+6ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/codigofacilito-api-dotnet/index.html[22m [2m(+8ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/codigofacilito-nextjs/index.html[22m [2m(+5ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/codigofacilito-bootcamp-react/index.html[22m [2m(+8ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/devdatep-liderazgo/index.html[22m [2m(+8ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/diseno-ux-ch/index.html[22m [2m(+5ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/santander-copilot/index.html[22m [2m(+6ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/santander-google-ia/index.html[22m [2m(+7ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/certifications/thepower-ia-trabajo/index.html[22m [2m(+5ms)[22m 
-[2m12:48:33[22m   [34mÔööÔöÇ[39m [2m/certifications/big-school-desarrollo-con-ia/index.html[22m [2m(+5ms)[22m 
-[2m12:48:33[22m [32mÔûÂ[39m src/pages/projects/[slug].astro
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/projects/american-clothing/index.html[22m [2m(+14ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/projects/green-side/index.html[22m [2m(+11ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/projects/gatuna-matata/index.html[22m [2m(+7ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/projects/cine-app/index.html[22m [2m(+10ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/projects/stacker-burger/index.html[22m [2m(+7ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/projects/sistema-gestion-libreria/index.html[22m [2m(+9ms)[22m 
-[2m12:48:33[22m   [34mÔö£ÔöÇ[39m [2m/projects/wiki-forgotten-empires/index.html[22m [2m(+11ms)[22m 
-[2m12:48:33[22m   [34mÔööÔöÇ[39m [2m/projects/devdatep/index.html[22m [2m(+9ms)[22m 
-[2m12:48:33[22m [32mÔûÂ[39m src/pages/index.astro
-[2m12:48:33[22m   [34mÔööÔöÇ[39m [2m/index.html[22m [2m(+106ms)[22m 
-[2m12:48:33[22m [32mÔ£ô Completed in 568ms.
+[2m20:21:15[22m [32mÔûÂ[39m src/pages/certifications/[slug].astro
+[2m20:21:15[22m   [34mÔö£ÔöÇ[39m [2m/certifications/alura-inmersion-ia/index.html[22m [2m(+35ms)[22m 
+[2m20:21:15[22m   [34mÔö£ÔöÇ[39m [2m/certifications/aws-cloud-foundations/index.html[22m [2m(+12ms)[22m 
+[2m20:21:15[22m   [34mÔö£ÔöÇ[39m [2m/certifications/aws-generative-ai/index.html[22m [2m(+10ms)[22m 
+[2m20:21:15[22m   [34mÔö£ÔöÇ[39m [2m/certifications/big-school-ia/index.html[22m [2m(+8ms)[22m 
+[2m20:21:15[22m   [34mÔö£ÔöÇ[39m [2m/certifications/coderhouse-desarrollo-web/index.html[22m [2m(+11ms)[22m 
+[2m20:21:15[22m   [34mÔö£ÔöÇ[39m [2m/certifications/coderhouse-ux-ui/index.html[22m [2m(+16ms)[22m 
+[2m20:21:15[22m   [34mÔö£ÔöÇ[39m [2m/certifications/codigofacilito-api-dotnet/index.html[22m [2m(+13ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/certifications/codigofacilito-nextjs/index.html[22m [2m(+8ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/certifications/codigofacilito-bootcamp-react/index.html[22m [2m(+9ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/certifications/devdatep-liderazgo/index.html[22m [2m(+17ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/certifications/diseno-ux-ch/index.html[22m [2m(+6ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/certifications/santander-copilot/index.html[22m [2m(+5ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/certifications/santander-google-ia/index.html[22m [2m(+5ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/certifications/thepower-ia-trabajo/index.html[22m [2m(+4ms)[22m 
+[2m20:21:16[22m   [34mÔööÔöÇ[39m [2m/certifications/big-school-desarrollo-con-ia/index.html[22m [2m(+4ms)[22m 
+[2m20:21:16[22m [32mÔûÂ[39m src/pages/projects/[slug].astro
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/projects/american-clothing/index.html[22m [2m(+14ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/projects/green-side/index.html[22m [2m(+12ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/projects/gatuna-matata/index.html[22m [2m(+8ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/projects/cine-app/index.html[22m [2m(+9ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/projects/stacker-burger/index.html[22m [2m(+7ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/projects/sistema-gestion-libreria/index.html[22m [2m(+6ms)[22m 
+[2m20:21:16[22m   [34mÔö£ÔöÇ[39m [2m/projects/wiki-forgotten-empires/index.html[22m [2m(+9ms)[22m 
+[2m20:21:16[22m   [34mÔööÔöÇ[39m [2m/projects/devdatep/index.html[22m [2m(+9ms)[22m 
+[2m20:21:16[22m [32mÔûÂ[39m src/pages/index.astro
+[2m20:21:16[22m   [34mÔööÔöÇ[39m [2m/index.html[22m [2m(+112ms)[22m 
+[2m20:21:16[22m [32mÔ£ô Completed in 581ms.
 [39m
 [42m[30m generating optimized images [39m[49m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/og-image.CUorZIbJ_Li9DN.jpg [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(1/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_Z2tVWEH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(2/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_24oSiB.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(3/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_Z1iLHmy.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(4/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_qt9zW.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(5/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_Z1pe0qT.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(6/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_1KrKxH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(7/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_Z15JL6x.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(8/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_27JkIu.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(9/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_10rktb.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(10/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_hNps5.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(11/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_14KF9r.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(12/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_Z2hxtgf.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(13/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_29bz8y.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(14/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_Z1q0nte.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(15/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_1Oyx9K.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(16/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_OOcDp.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(17/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_vzqSm.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(18/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_9mQWG.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(19/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_Z2aysmg.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(20/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_Z1aPHho.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(21/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_Gi9Xv.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(22/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_2lArsB.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(23/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_Z2kyJ9U.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(24/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_i8ieq.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(25/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_Z7l7R2.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(26/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_2cD1wE.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(27/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_17wL7D.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(28/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_Z289VAV.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(29/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_18EYCd.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(30/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_1GacNq.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(31/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_2k50io.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(32/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_qcC06.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(33/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_24vDGX.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(34/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_1T5Vrx.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(35/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_1dnO66.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(36/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_Z1OJn8z.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(37/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_ZAqrF6.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(38/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_1fjOFF.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(39/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_1G32Os.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(40/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_2r6ICR.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(41/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_Z1D75fR.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(42/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_Z13FRo.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(43/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_1M6TRJ.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(44/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_1tq8LP.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(45/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_28AtX8.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(46/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_Z1UgjPt.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(47/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_sOvTU.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(48/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_AymJJ.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(49/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_dPJu9.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(50/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_9TyV0.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(51/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_Z1Ra1ib.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(52/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_HRba2.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(53/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_1lokGH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(54/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_Z13Bjij.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(55/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_ZIahVO.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(56/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-services-grid.1MkI9AzO_28xRIG.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(57/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_1VW5NO.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(58/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_ZAmAP7.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(59/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_Z190Jsl.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(60/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_2kEIWN.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(61/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_12rSWV.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(62/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-services-grid.1MkI9AzO_Z2m5oMv.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(63/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_Z23CX73.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(64/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_1EfcsM.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(65/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_pj4GX.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(66/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_ZFClkR.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(67/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_1Um3dy.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(68/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-services-grid.1MkI9AzO_ZAscRK.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(69/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_2vXMbH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(70/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_29XP0k.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(71/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_Z27miY2.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(72/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_Z2ehGDk.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(73/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_1Mo12k.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(74/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_Yb0Jm.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(75/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_ZHUF7A.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(76/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_Z1ekxoV.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(77/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Zb6li1.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(78/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_Z1waUQQ.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(79/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_1QdGnb.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(80/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_Z2b02Jw.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(81/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_ZqXfBo.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(82/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_whDuO.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(83/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Z1brQ7b.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(84/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_ZCQzdT.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(85/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_ZJtTGh.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(86/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_ZOkwbT.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(87/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_Z1GPbwg.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(88/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_ZpGPSK.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(89/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_1nGvnA.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(90/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_Z1FRWMQ.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(91/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_Z2gFGeu.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(92/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_WVuof.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(93/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_Z28L8E.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(94/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_1CUGAn.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(95/176)[22m
-[2m12:48:33[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_JUXe.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(96/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_SgoGU.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(97/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_2gEIGw.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(98/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_17nDKh.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(99/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_207oHH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(100/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_Z1Q1D5c.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(101/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Z1vk3n1.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(102/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_ZbU1JN.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(103/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_Zy4sQ0.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(104/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_Z1Disl3.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(105/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_cK3l1.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(106/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_Z1t4FwN.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(107/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_yYCan.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(108/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_2s0uE2.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(109/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_MA2GC.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(110/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_Z11qsbd.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(111/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_Z5FATb.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(112/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_Z3KdSe.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(113/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Z1V398M.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(114/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_Z1ifvat.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(115/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-entity-listing-view.CysOAKWK_2gJDb.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(116/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-project-description.B-ZAKE-s_1c3nzP.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(117/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_AEUub.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(118/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_1wtzf8.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(119/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_Z1XNLHv.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(120/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_vOSoJ.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(121/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-entity-listing-view.CysOAKWK_ZTNiGi.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(122/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-project-description.B-ZAKE-s_9i6cO.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(123/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_1X4dow.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(124/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_1TqwMw.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(125/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_1jDD7l.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(126/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_1mgk4M.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(127/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-entity-listing-view.CysOAKWK_ZVrGCB.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(128/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-2.8y7WsXyO_1KSu44.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(129/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_1ECy9k.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(130/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-json-response-data.CtSuuwfe_1C572O.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(131/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_ZVOBe3.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(132/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_NVnes.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(133/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-2.8y7WsXyO_Z1AgfTl.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(134/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_Zf8P9D.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(135/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_Z2sIP3R.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(136/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_Z1RPGwO.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(137/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-json-response-data.CtSuuwfe_FukMx.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(138/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_ZzWNVN.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(139/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-2.8y7WsXyO_1drCyc.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(140/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_21dtSb.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(141/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_Zza6hF.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(142/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_Z2v9vSj.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(143/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-json-response-data.CtSuuwfe_Z1lB0pD.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(144/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_Z1Q2PDJ.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(145/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_Z22fhfx.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(146/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_M3zJ6.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(147/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_Z1Pf7YB.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(148/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_Z1zuBPq.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(149/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_1Tc7wu.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(150/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_25ai16.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(151/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_Z1lE0rd.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(152/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_Z1lEEoW.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(153/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_2tUtpa.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(154/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_1Al9VL.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(155/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_1ff82z.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(156/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_Z1Guw2M.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(157/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_1AH1M9.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(158/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_1fMQ2.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(159/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_2e5Dy9.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(160/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_Z12bPYu.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(161/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_ZOSEm.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(162/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_Z1YEpPh.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(163/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_ZEccIk.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(164/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_1BXuUT.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(165/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_BjRek.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(166/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_1OrGgI.avif [2m(reused cache entry)[22m [2m(+18ms)[22m [2m(167/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_Z1TCX7q.webp [2m(reused cache entry)[22m [2m(+18ms)[22m [2m(168/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_Z1qxsN.webp [2m(reused cache entry)[22m [2m(+17ms)[22m [2m(169/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_1n8wjB.webp [2m(reused cache entry)[22m [2m(+19ms)[22m [2m(170/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_25nKmN.webp [2m(reused cache entry)[22m [2m(+17ms)[22m [2m(171/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_Z2dgcf9.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(172/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_2hdece.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(173/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_Qftx4.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(174/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_Z1uAKGI.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(175/176)[22m
-[2m12:48:34[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_Z1Oavkd.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(176/176)[22m
-[2m12:48:34[22m [32mÔ£ô Completed in 80ms.
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/og-image.CUorZIbJ_Li9DN.jpg [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(1/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_Z2tVWEH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(2/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_qt9zW.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(3/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_Z1iLHmy.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(4/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_24oSiB.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(5/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_Z1pe0qT.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(6/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_1KrKxH.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(7/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_Z15JL6x.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(8/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_hNps5.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(9/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_27JkIu.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(10/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_14KF9r.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(11/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_10rktb.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(12/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_Z2hxtgf.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(13/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_29bz8y.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(14/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_OOcDp.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(15/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_Z1q0nte.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(16/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_1Oyx9K.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(17/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_9mQWG.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(18/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-auth-login.Bu60cLS0_Z2aysmg.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(19/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_vzqSm.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(20/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_2lArsB.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(21/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-about-section.CqnBZbK5_Z1aPHho.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(22/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-catalogo.CRSDN2js_i8ieq.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(23/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_Z7l7R2.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(24/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-profile-thumbnail.Qbml4dyx_Z2kyJ9U.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(25/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_Gi9Xv.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(26/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_Z289VAV.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(27/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_2cD1wE.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(28/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_18EYCd.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(29/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_2k50io.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(30/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_1GacNq.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(31/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_17wL7D.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(32/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_1T5Vrx.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(33/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_24vDGX.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(34/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_1dnO66.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(35/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_ZAqrF6.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(36/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_Z1OJn8z.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(37/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_qcC06.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(38/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_1G32Os.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(39/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/american-clothing-landing-hero.BjS7V8Zs_2r6ICR.avif [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(40/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_Z1D75fR.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(41/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-catalogo-productos.ChKxpgPp_1M6TRJ.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(42/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_Z13FRo.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(43/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_28AtX8.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(44/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/about-section-full.CvRnLEiD_sOvTU.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(45/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-nosotros.CUvh_IPj_1tq8LP.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(46/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/nutri-side-landing-hero.CJngWnla_1fjOFF.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(47/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_Z1UgjPt.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(48/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-contacto.GSm8bz_j_dPJu9.webp [2m(reused cache entry)[22m [2m(+6ms)[22m [2m(49/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_Z1Ra1ib.webp [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(50/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_AymJJ.webp [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(51/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_9TyV0.webp [2m(reused cache entry)[22m [2m(+8ms)[22m [2m(52/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_1lokGH.webp [2m(reused cache entry)[22m [2m(+8ms)[22m [2m(53/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_HRba2.webp [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(54/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-services-grid.1MkI9AzO_28xRIG.webp [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(55/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_Z13Bjij.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(56/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_1VW5NO.webp [2m(reused cache entry)[22m [2m(+6ms)[22m [2m(57/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_ZIahVO.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(58/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_Z190Jsl.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(59/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_2kEIWN.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(60/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_ZAmAP7.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(61/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-services-grid.1MkI9AzO_Z2m5oMv.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(62/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/contact-form.CoBV7PnP_Z23CX73.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(63/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_12rSWV.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(64/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_pj4GX.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(65/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/projects-informacion-mapas.DKssSx6g_ZFClkR.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(66/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero-informacion.ZMXUz_-v_1EfcsM.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(67/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-services-grid.1MkI9AzO_ZAscRK.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(68/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_2vXMbH.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(69/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_1Um3dy.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(70/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-auth-login.BNdhAvDf_Z27miY2.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(71/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_29XP0k.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(72/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_Z2ehGDk.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(73/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_Yb0Jm.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(74/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_ZHUF7A.webp [2m(reused cache entry)[22m [2m(+6ms)[22m [2m(75/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_1Mo12k.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(76/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Zb6li1.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(77/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_Z1ekxoV.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(78/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_Z2b02Jw.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(79/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_ZqXfBo.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(80/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_1QdGnb.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(81/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-landing-hero.Bdi0jKh9_Z1waUQQ.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(82/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Z1brQ7b.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(83/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_whDuO.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(84/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_ZOkwbT.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(85/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_Z1GPbwg.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(86/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-about-section.DzxhjSUQ_ZJtTGh.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(87/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_ZCQzdT.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(88/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_1nGvnA.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(89/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/gatuna-matata-contact-form.BOaH1xjQ_ZpGPSK.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(90/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_WVuof.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(91/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-favorites-list.7midV2rs_Z28L8E.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(92/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_Z2gFGeu.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(93/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_Z1FRWMQ.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(94/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_JUXe.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(95/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_1CUGAn.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(96/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_2gEIGw.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(97/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_207oHH.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(98/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_17nDKh.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(99/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_SgoGU.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(100/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Z1vk3n1.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(101/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_Z1Q1D5c.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(102/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_Zy4sQ0.avif [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(103/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_cK3l1.webp [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(104/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_Z1Disl3.webp [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(105/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-menu-catalog.CyTJG_K9_ZbU1JN.webp [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(106/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_yYCan.avif [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(107/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_Z1t4FwN.webp [2m(reused cache entry)[22m [2m(+6ms)[22m [2m(108/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/cine-app-movie-catalog.CUZWdWFf_MA2GC.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(109/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_Z5FATb.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(110/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-about-section.CBNnU-st_Z11qsbd.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(111/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/stacker-burger-landing-hero.CkzkaaOA_Z1V398M.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(112/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_2s0uE2.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(113/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_Z3KdSe.avif [2m(reused cache entry)[22m [2m(+7ms)[22m [2m(114/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-entity-listing-view.CysOAKWK_2gJDb.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(115/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_AEUub.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(116/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-project-description.B-ZAKE-s_1c3nzP.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(117/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_Z1XNLHv.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(118/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_Z1ifvat.webp [2m(reused cache entry)[22m [2m(+6ms)[22m [2m(119/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-entity-listing-view.CysOAKWK_ZTNiGi.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(120/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_1wtzf8.avif [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(121/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_1jDD7l.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(122/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_1X4dow.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(123/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-project-description.B-ZAKE-s_9i6cO.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(124/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_vOSoJ.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(125/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-entity-listing-view.CysOAKWK_ZVrGCB.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(126/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/sistema-libreria.CTjQJhHI_1TqwMw.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(127/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_ZVOBe3.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(128/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-landing-hero.CW9m1n3i_1ECy9k.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(129/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-2.8y7WsXyO_1KSu44.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(130/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-main-entities-overview.Bk2jIb64_1mgk4M.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(131/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-json-response-data.CtSuuwfe_1C572O.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(132/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_NVnes.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(133/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-1.BNnrFfOy_Z1RPGwO.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(134/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_Zf8P9D.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(135/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-2.8y7WsXyO_Z1AgfTl.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(136/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_Z2sIP3R.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(137/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-json-response-data.CtSuuwfe_FukMx.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(138/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_ZzWNVN.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(139/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_Z2v9vSj.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(140/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_21dtSb.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(141/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-swagger-docs-endpoints-2.8y7WsXyO_1drCyc.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(142/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_Zza6hF.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(143/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/forgotten-empires-api-json-response-data.CtSuuwfe_Z1lB0pD.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(144/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_Z1Q2PDJ.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(145/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_Z1zuBPq.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(146/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_Z22fhfx.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(147/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_Z1Pf7YB.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(148/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_M3zJ6.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(149/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_1Tc7wu.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(150/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_25ai16.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(151/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_1Al9VL.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(152/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-about.BEY-k6mz_Z1lE0rd.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(153/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-goal.BGAXehyD_2tUtpa.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(154/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_Z1lEEoW.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(155/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_1ff82z.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(156/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_Z1Guw2M.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(157/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-works.C9Pqd-NR_Z12bPYu.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(158/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_1AH1M9.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(159/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_2e5Dy9.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(160/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_1fMQ2.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(161/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_Z1YEpPh.avif [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(162/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_ZOSEm.webp [2m(reused cache entry)[22m [2m(+5ms)[22m [2m(163/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_1n8wjB.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(164/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_ZEccIk.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(165/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_BjRek.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(166/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-products.Ct337Cws_1BXuUT.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(167/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-hero.BUAZ8GJx_1OrGgI.avif [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(168/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-blog.C7JbRh8Y_Z1TCX7q.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(169/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_2hdece.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(170/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_Z1qxsN.webp [2m(reused cache entry)[22m [2m(+4ms)[22m [2m(171/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_25nKmN.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(172/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_Z1uAKGI.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(173/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-form.DFPYEAqR_Z2dgcf9.webp [2m(reused cache entry)[22m [2m(+1ms)[22m [2m(174/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/devdatep-FAQ.nPXP-Mx5_Qftx4.webp [2m(reused cache entry)[22m [2m(+2ms)[22m [2m(175/176)[22m
+[2m20:21:16[22m   [32mÔûÂ[39m /_astro/hero10.CR-p7i2e_Z1Oavkd.webp [2m(reused cache entry)[22m [2m(+3ms)[22m [2m(176/176)[22m
+[2m20:21:16[22m [32mÔ£ô Completed in 115ms.
 [39m
-[2m12:48:34[22m [34m[build][39m Rearranging server assets...
-[2m12:48:34[22m [34m[@astrojs/vercel][39m Bundling function ..\..\..\..\dist\server\entry.mjs
-12:48:36 [ERROR] [@astrojs/vercel] An unhandled error occurred while running the "astro:build:done" hook
+[2m20:21:16[22m [34m[build][39m Rearranging server assets...
+[2m20:21:16[22m [34m[@astrojs/vercel][39m Bundling function ..\..\..\..\dist\server\entry.mjs
+20:21:19 [ERROR] [@astrojs/vercel] An unhandled error occurred while running the "astro:build:done" hook
 EPERM: operation not permitted, symlink '.pnpm\react@19.2.0\node_modules\react' -> 'D:\Portfolios\portfolioLanding\.vercel\output\functions\_render.func\node_modules\react'
   Stack trace:
     at async Module.symlink (node:internal/fs/promises:1006:10)
@@ -263,4 +264,3 @@ EPERM: operation not permitted, symlink '.pnpm\react@19.2.0\node_modules\react' 
     at async astro:build:done (file:///D:/Portfolios/portfolioLanding/node_modules/.pnpm/@astrojs+vercel@9.0.4_astro_465de500f303f0dd79ed83fbf4b203a9/node_modules/@astrojs/vercel/dist/index.js:333:15)
     at async runHookInternal (file:///D:/Portfolios/portfolioLanding/node_modules/.pnpm/astro@5.16.11_@types+node@2_dd142481f2f6c13adeaa2e008a31dea3/node_modules/astro/dist/integrations/hooks.js:51:5)
     at async AstroBuilder.build (file:///D:/Portfolios/portfolioLanding/node_modules/.pnpm/astro@5.16.11_@types+node@2_dd142481f2f6c13adeaa2e008a31dea3/node_modules/astro/dist/core/build/index.js:167:5)
-ÔÇëELIFECYCLEÔÇë Command failed with exit code 1.

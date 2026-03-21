@@ -1,26 +1,25 @@
 ---
-// src/components/ThemeToggle.astro
-// VERSIÓN "CONTROL PURO": Sin contenedor, solo el icono animado.
-// Calibrado para un tamaño más pequeño y delicado.
+// src/components/modules/ThemeToggle.astro
+// VERSIÓN "CONTROL PURO" MULTI-INSTANCIA: Soporta múltiples botones en una misma página.
+const { class: className, ...rest } = Astro.props;
 ---
 
 <button
-  id="theme-toggle"
-  class="/* REFINAMIENTO: Botón más pequeño (h-7 w-7) */ text-text-navbar/50 hover:text-text-navbar relative flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary dark:text-text-primary/50 hover:dark:text-text-primary"
+  class:list={[
+    'js-theme-toggle text-text-navbar/50 hover:text-text-navbar relative flex h-8 w-8 items-center justify-center rounded-full transition-colors duration-300 focus:outline-none focus-visible:ring-2 focus-visible:ring-text-primary dark:text-text-primary/50 hover:dark:text-text-primary',
+    className,
+  ]}
   aria-label="Toggle light and dark theme"
-  {...Astro.props}
+  {...rest}
 >
-  <!-- REFINAMIENTO: Contenedor de icono más pequeño (h-5 w-5) -->
-  <div class="relative h-5 w-5 overflow-hidden">
+  <div class="relative h-5 w-5 overflow-hidden pointer-events-none">
     <div
-      id="icon-sun"
-      class="sun-icon absolute inset-0 fill-none stroke-current"
+      class="js-icon-sun absolute inset-0 fill-none stroke-current"
       style="stroke-width: 2.0; stroke-linecap: round;"
     >
-      {/* REFINAMIENTO: SVG más pequeño (h-5 w-5) */}
       <svg class="h-5 w-5" viewBox="0 0 24 24">
-        <circle id="sun-core" cx="12" cy="12" r="4"></circle>
-        <g id="sun-rays">
+        <circle class="js-sun-core" cx="12" cy="12" r="4"></circle>
+        <g class="js-sun-rays">
           <line x1="12" y1="1" x2="12" y2="3"></line><line
             x1="12"
             y1="21"
@@ -40,82 +39,99 @@
       </svg>
     </div>
     <div
-      id="icon-moon"
-      class="moon-icon absolute inset-0 fill-none stroke-current"
+      class="js-icon-moon absolute inset-0 fill-none stroke-current opacity-0"
       style="stroke-width: 2.0; stroke-linecap: round; stroke-linejoin: round;"
     >
-      {/* REFINAMIENTO: SVG más pequeño (h-5 w-5) */}
       <svg class="h-5 w-5" viewBox="0 0 24 24">
         <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
       </svg>
     </div>
   </div>
 </button>
+
 <script>
   import gsap from 'gsap';
 
-  document.addEventListener('DOMContentLoaded', () => {
-    const toggleButton = document.getElementById('theme-toggle');
-    if (!toggleButton) return;
+  function initThemeToggles() {
+    const toggles = document.querySelectorAll('.js-theme-toggle');
+    const isDarkMode = document.documentElement.classList.contains('dark');
 
-    const sunRays = document.getElementById('sun-rays');
-    const sunCore = document.getElementById('sun-core');
-    const moonIcon = document.getElementById('icon-moon');
+    toggles.forEach((toggle) => {
+      // Evitar doble inicialización
+      if (toggle.hasAttribute('data-initialized')) return;
+      toggle.setAttribute('data-initialized', 'true');
 
-    let isDarkMode = document.documentElement.classList.contains('dark');
+      const sunRays = toggle.querySelector('.js-sun-rays');
+      const sunCore = toggle.querySelector('.js-sun-core');
+      const moonIcon = toggle.querySelector('.js-icon-moon');
 
-    // 2. OPTIMIZACIÓN DE GSAP: Usamos `autoAlpha` en lugar de `opacity`.
-    gsap.set(toggleButton, { 'pointer-events': 'auto' });
-    if (isDarkMode) {
-      gsap.set(sunRays, {
-        scale: 0,
-        autoAlpha: 0,
-        transformOrigin: 'center center',
+      // Animaciones por instancia
+      const sunToMoon = gsap.timeline({
+        paused: true,
+        defaults: { duration: 0.4, ease: 'power2.inOut' },
       });
-      gsap.set(sunCore, { autoAlpha: 0 });
-      gsap.set(moonIcon, { y: 0, autoAlpha: 1 });
-    } else {
-      gsap.set(sunRays, {
-        scale: 1,
-        autoAlpha: 1,
-        transformOrigin: 'center center',
+      
+      sunToMoon
+        .to(sunRays, { scale: 0, autoAlpha: 0, transformOrigin: 'center center' })
+        .to(moonIcon, { y: 0, autoAlpha: 1 }, '<')
+        .to(sunCore, { autoAlpha: 0 }, '<0.1');
+
+      const moonToSun = gsap.timeline({
+        paused: true,
+        defaults: { duration: 0.4, ease: 'power2.inOut' },
       });
-      gsap.set(sunCore, { autoAlpha: 1 });
-      gsap.set(moonIcon, { y: '100%', autoAlpha: 0 });
-    }
+      
+      moonToSun
+        .to(moonIcon, { y: '100%', autoAlpha: 0 })
+        .to(sunCore, { autoAlpha: 1 }, '<')
+        .to(sunRays, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' }, '<0.1');
 
-    const sunToMoon = gsap.timeline({
-      paused: true,
-      defaults: { duration: 0.4, ease: 'power2.inOut' },
-    });
-    sunToMoon
-      .to(sunRays, { scale: 0, autoAlpha: 0 })
-      .to(moonIcon, { y: 0, autoAlpha: 1 }, '<')
-      .to(sunCore, { autoAlpha: 0 }, '<0.1');
-
-    const moonToSun = gsap.timeline({
-      paused: true,
-      defaults: { duration: 0.4, ease: 'power2.inOut' },
-    });
-    moonToSun
-      .to(moonIcon, { y: '100%', autoAlpha: 0 })
-      .to(sunCore, { autoAlpha: 1 }, '<')
-      .to(sunRays, { scale: 1, autoAlpha: 1 }, '<0.1');
-
-    toggleButton.addEventListener('click', () => {
-      if (sunToMoon.isActive() || moonToSun.isActive()) return;
-      isDarkMode = !isDarkMode;
-
+      // Estado inicial
       if (isDarkMode) {
-        document.documentElement.classList.add('dark');
-        moonToSun.reverse();
-        sunToMoon.play();
+        gsap.set(sunRays, { scale: 0, autoAlpha: 0, transformOrigin: 'center center' });
+        gsap.set(sunCore, { autoAlpha: 0 });
+        gsap.set(moonIcon, { y: 0, autoAlpha: 1 });
       } else {
-        document.documentElement.classList.remove('dark');
-        sunToMoon.reverse();
-        moonToSun.play();
+        gsap.set(sunRays, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' });
+        gsap.set(sunCore, { autoAlpha: 1 });
+        gsap.set(moonIcon, { y: '100%', autoAlpha: 0 });
       }
-      localStorage.setItem('theme', isDarkMode ? 'dark' : 'light');
+
+      toggle.addEventListener('click', () => {
+        const currentlyDark = document.documentElement.classList.contains('dark');
+        const nextDark = !currentlyDark;
+
+        // Cambiar clase en HTML (afecta a todos)
+        if (nextDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+        
+        localStorage.setItem('theme', nextDark ? 'dark' : 'light');
+
+        // Disparar evento para sincronizar OTRAS instancias
+        document.dispatchEvent(new CustomEvent('theme-changed', { detail: { isDark: nextDark } }));
+      });
+
+      // Sincronización entre instancias
+      document.addEventListener('theme-changed', (e: any) => {
+        const { isDark } = e.detail;
+        if (isDark) {
+          if (moonToSun.isActive()) moonToSun.pause();
+          sunToMoon.play();
+        } else {
+          if (sunToMoon.isActive()) sunToMoon.pause();
+          sunToMoon.reverse(); // O usar moonToSun.play() si prefieres timelines separados
+          // Para ser consistente con la lógica original de ida y vuelta:
+          // sunToMoon.reverse() funciona si el estado inicial es sun.
+        }
+      });
     });
-  });
+  }
+
+  // Ejecutar en cada carga de página (soporta View Transitions)
+  document.addEventListener('astro:page-load', initThemeToggles);
+  document.addEventListener('DOMContentLoaded', initThemeToggles);
 </script>
+

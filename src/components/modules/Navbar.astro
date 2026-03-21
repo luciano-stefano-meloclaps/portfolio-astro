@@ -2,7 +2,7 @@
 // src/components/modules/Navbar.astro
 import Links from '@/components/ui/Links.astro';
 import ThemeToggle from '@/components/modules/ThemeToggle.astro';
-import { IconMenu, IconX } from '@tabler/icons-react';
+import { IconMenu2, IconX } from '@tabler/icons-react';
 ---
 
 <header
@@ -10,37 +10,49 @@ import { IconMenu, IconX } from '@tabler/icons-react';
   class="pointer-events-auto fixed left-1/2 top-5 z-[100] w-auto -translate-x-1/2 -translate-y-full opacity-0"
   aria-label="Cabecera del sitio"
 >
-  <!-- CONTENEDO-->
+  <!-- CONTENEDOR -->
   <nav
     id="navbar-container"
-    class="glass-panel card-border flex min-w-[180px] items-center gap-x-8 rounded-medium px-10 py-3 shadow-lg transition-all duration-300 md:min-w-0 md:px-16"
+    class="glass-panel card-border flex w-[calc(100vw-2rem)] items-center justify-between rounded-medium px-6 py-2.5 shadow-lg transition-all duration-300 sm:max-w-[calc(100vw-3rem)] md:px-10 lg:max-w-[832px]"
   >
-    <!-- Navegación de Escritorio -->
+    <!-- Logo/Icono (Lado Izquierdo) -->
+    <div class="flex items-center">
+      <a 
+        href="/#hero" 
+        class="flex items-center gap-2 transition-transform hover:scale-110 active:scale-95 group focus:outline-none"
+        aria-label="Volver al inicio"
+      >
+        <img 
+          src="/favicon.png" 
+          alt="Luciano Melo Icon" 
+          class="h-7 w-7 opacity-90 transition-all duration-300 group-hover:opacity-100 invert dark:invert-0"
+        />
+      </a>
+    </div>
+
+    <!-- Navegación de Escritorio (Centro) -->
     <div class="hidden items-center md:flex">
       <Links
-        aClass="text-sm !text-text-navbar tracking-widest dark:!text-text-primary/70 hover:!text-text-navbar"
+        aClass="text-sm !text-text-navbar tracking-widest dark:!text-text-primary/70 hover:!text-text-navbar transition-colors"
       />
     </div>
 
-    <!-- Separador (Solo Desktop) -->
-    <div class="hidden h-4 w-px bg-border/70 dark:bg-border md:block"></div>
-
-    <!-- 
-      CONTROLES (TEMA + MENÚ)
-    -->
-    <div
-      class="flex w-full items-center justify-between md:w-auto md:justify-start md:gap-x-2"
-    >
+    <!-- Controles de Escritorio (Derecha) -->
+    <div class="hidden items-center gap-x-6 md:flex">
+      <div class="h-4 w-px bg-border/70 dark:bg-border"></div>
       <ThemeToggle class="text-text-navbar hover:text-text-primary" />
+    </div>
 
+    <!-- Controles Móviles (Solo Hamburger) -->
+    <div class="flex items-center md:hidden">
       <!-- Botón de Menú Móvil -->
       <button
         id="mobile-menu-toggle"
-        class="!text-text-navbar hover:text-text-navbar cursor-pointer p-2 transition-colors md:hidden"
+        class="!text-text-navbar hover:text-text-navbar cursor-pointer p-2 transition-colors"
         aria-label="Abrir o cerrar menú"
       >
         <div id="icon-menu" class="block">
-          <IconMenu className="h-6 w-6" strokeWidth={1.0} />
+          <IconMenu2 className="h-6 w-6" strokeWidth={1.0} />
         </div>
         <div id="icon-close" class="hidden">
           <IconX className="h-6 w-6" strokeWidth={1.0} />
