@@ -55,6 +55,9 @@ const { class: className, ...rest } = Astro.props;
   function initThemeToggles() {
     const toggles = document.querySelectorAll('.js-theme-toggle');
     const isDarkMode = document.documentElement.classList.contains('dark');
+    
+    // Array para rastrear todas las animaciones activas en la página actual
+    const activeTimelines: gsap.core.Timeline[] = [];
 
     toggles.forEach((toggle) => {
       // Evitar doble inicialización
@@ -65,7 +68,7 @@ const { class: className, ...rest } = Astro.props;
       const sunCore = toggle.querySelector('.js-sun-core');
       const moonIcon = toggle.querySelector('.js-icon-moon');
 
-      // Animaciones por instancia
+      // Animación única y centralizada
       const sunToMoon = gsap.timeline({
         paused: true,
         defaults: { duration: 0.4, ease: 'power2.inOut' },
@@ -76,26 +79,15 @@ const { class: className, ...rest } = Astro.props;
         .to(moonIcon, { y: 0, autoAlpha: 1 }, '<')
         .to(sunCore, { autoAlpha: 0 }, '<0.1');
 
-      const moonToSun = gsap.timeline({
-        paused: true,
-        defaults: { duration: 0.4, ease: 'power2.inOut' },
-      });
-      
-      moonToSun
-        .to(moonIcon, { y: '100%', autoAlpha: 0 })
-        .to(sunCore, { autoAlpha: 1 }, '<')
-        .to(sunRays, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' }, '<0.1');
-
-      // Estado inicial
+      // ⚡ CRITICAL FIX: Sincronización del estado inicial de la línea de tiempo.
       if (isDarkMode) {
-        gsap.set(sunRays, { scale: 0, autoAlpha: 0, transformOrigin: 'center center' });
-        gsap.set(sunCore, { autoAlpha: 0 });
-        gsap.set(moonIcon, { y: 0, autoAlpha: 1 });
+        sunToMoon.progress(1); // Mueve la animación al final (Estado Luna)
       } else {
-        gsap.set(sunRays, { scale: 1, autoAlpha: 1, transformOrigin: 'center center' });
-        gsap.set(sunCore, { autoAlpha: 1 });
-        gsap.set(moonIcon, { y: '100%', autoAlpha: 0 });
+        sunToMoon.progress(0); // Mueve la animación al inicio (Estado Sol)
       }
+
+      // Añadimos la línea de tiempo a la colección global
+      activeTimelines.push(sunToMoon);
 
       toggle.addEventListener('click', () => {
         const currentlyDark = document.documentElement.classList.contains('dark');
@@ -113,21 +105,24 @@ const { class: className, ...rest } = Astro.props;
         // Disparar evento para sincronizar OTRAS instancias
         document.dispatchEvent(new CustomEvent('theme-changed', { detail: { isDark: nextDark } }));
       });
+    });
 
-      // Sincronización entre instancias
+    // ⚡ TECH DEBT FIX: Listener Global ÚNICO.
+    // Solo registramos el listener si no fue registrado previamente en el document.
+    // Esto previene que se apilen 10 listeners al navegar por 10 páginas (SPA mode).
+    if (!(document as any).hasThemeSyncListener) {
+      (document as any).hasThemeSyncListener = true;
+      
       document.addEventListener('theme-changed', (e: any) => {
         const { isDark } = e.detail;
-        if (isDark) {
-          if (moonToSun.isActive()) moonToSun.pause();
-          sunToMoon.play();
-        } else {
-          if (sunToMoon.isActive()) sunToMoon.pause();
-          sunToMoon.reverse(); // O usar moonToSun.play() si prefieres timelines separados
-          // Para ser consistente con la lógica original de ida y vuelta:
-          // sunToMoon.reverse() funciona si el estado inicial es sun.
-        }
+        
+        // Disparamos play o reverse en TODAS las instancias capturadas
+        activeTimelines.forEach((tl) => {
+          if (isDark) tl.play();
+          else tl.reverse();
+        });
       });
-    });
+    }
   }
 
   // Ejecutar en cada carga de página (soporta View Transitions)
