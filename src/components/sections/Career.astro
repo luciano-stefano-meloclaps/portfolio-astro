@@ -3,6 +3,8 @@
 import { getCollection, type CollectionEntry } from 'astro:content';
 import ExperienceCard from '@/components/modules/ExperienceCard.astro';
 import SectionTitle from '@/components/ui/SectionTitle.astro';
+import Button from '@/components/ui/Button.astro';
+import { IconChevronDown } from '@tabler/icons-react';
 
 const allCareerItems: CollectionEntry<'career'>[] = await getCollection('career');
 
@@ -22,6 +24,8 @@ const getRelevance = (title: string) => {
 allCareerItems.sort(
   (a, b) => getRelevance(a.data.title) - getRelevance(b.data.title)
 );
+
+const INITIAL_LIMIT = 2;
 ---
 
 <section id="career" class="pt-40 md:pt-48 pb-24 md:pb-32 relative">
@@ -72,28 +76,43 @@ allCareerItems.sort(
 
       <div id="timeline-container" class="space-y-12">
         {
-          allCareerItems.map((item) => (
-            <div 
-              class="timeline-item flex gap-6 md:gap-10"
-              data-date={item.data.startDate.valueOf()}
-              data-relevance={getRelevance(item.data.title)}
-            >
-              
-              <!-- COLUMNA IZQUIERDA (Línea y Punto) -->
-              <div class="relative flex flex-col items-center w-10 md:w-12 shrink-0">
-                <div class="relative z-10 top-8 w-4 h-4 rounded-full bg-background border-2 border-text-primary shadow-[0_0_10px_rgba(0,0,0,0.2)]"></div>
-              </div>
+          allCareerItems.map((item, index) => {
+            const isHidden = index >= INITIAL_LIMIT;
+            return (
+              <div 
+                class={`timeline-item flex gap-6 md:gap-10 ${isHidden ? 'hidden' : ''}`}
+                data-date={item.data.startDate.valueOf()}
+                data-relevance={getRelevance(item.data.title)}
+              >
+                
+                <!-- COLUMNA IZQUIERDA (Línea y Punto) -->
+                <div class="relative flex flex-col items-center w-10 md:w-12 shrink-0">
+                  <div class="relative z-10 top-8 w-4 h-4 rounded-full bg-background border-2 border-text-primary shadow-[0_0_10px_rgba(0,0,0,0.2)]"></div>
+                </div>
 
-              <!-- COLUMNA DERECHA (Tarjeta) -->
-              <div class="flex-1 pb-8">
-                <ExperienceCard experience={item} />
+                <!-- COLUMNA DERECHA (Tarjeta) -->
+                <div class="flex-1 pb-8">
+                  <ExperienceCard experience={item} />
+                </div>
+                
               </div>
-              
-            </div>
-          ))
+            );
+          })
         }
       </div>
     </div>
+
+    <!-- VER MAS BUTTON -->
+    {
+      allCareerItems.length > INITIAL_LIMIT && (
+        <div class="mt-12 flex justify-center" id="career-load-more-container">
+          <Button id="career-load-more-btn" variant="secondary" class="group min-w-[200px]">
+            Ver Más Trayectoria
+            <IconChevronDown className="w-4 h-4 transition-transform duration-300 group-hover:translate-y-1" />
+          </Button>
+        </div>
+      )
+    }
   </div>
 </section>
 
@@ -111,7 +130,6 @@ allCareerItems.sort(
     );
   }
 
-  /* Para que el clip-path no corte el fondo de vidrio suavemente */
   .sort-control-inner {
     background-color: rgb(var(--color-panel-bg) / 0.15);
     backdrop-filter: blur(var(--blur-base));
@@ -136,16 +154,63 @@ allCareerItems.sort(
     if (!section) return;
 
     const line = section.querySelector('.timeline-line');
-    const items = gsap.utils.toArray('.timeline-item') as HTMLElement[];
     const container = document.getElementById('timeline-container');
     const sortButtons = document.querySelectorAll('.sort-button');
     const slider = document.getElementById('sort-slider');
+    const loadMoreBtn = document.getElementById('career-load-more-btn');
+    const loadMoreContainer = document.getElementById('career-load-more-container');
+    
+    // Convert NodeList to Array and cast
+    let allItems = gsap.utils.toArray('.timeline-item') as HTMLElement[];
+    let visibleCount = 2; // INITIAL_LIMIT
+
+    // Utility to apply visibility based on current sorted array
+    const applyVisibility = (animateItemsIn = false) => {
+      const currentItemsInDom = gsap.utils.toArray('.timeline-item') as HTMLElement[];
+      const itemsToAnimate: HTMLElement[] = [];
+
+      currentItemsInDom.forEach((item, index) => {
+        if (index < visibleCount) {
+          if (item.classList.contains('hidden')) {
+            item.classList.remove('hidden');
+            itemsToAnimate.push(item);
+          }
+        } else {
+          item.classList.add('hidden');
+        }
+      });
+
+      if (animateItemsIn && itemsToAnimate.length > 0) {
+        gsap.fromTo(itemsToAnimate, 
+          { autoAlpha: 0, y: 20 },
+          { autoAlpha: 1, y: 0, stagger: 0.1, duration: 0.5, ease: 'power2.out' }
+        );
+      }
+
+      // Update button visibility
+      if (loadMoreContainer) {
+        if (visibleCount >= currentItemsInDom.length) {
+          loadMoreContainer.style.display = 'none';
+        } else {
+          loadMoreContainer.style.display = 'flex';
+        }
+      }
+    };
+
+    // Load More click
+    if (loadMoreBtn) {
+      loadMoreBtn.addEventListener('click', () => {
+        visibleCount += 2;
+        applyVisibility(true);
+        ScrollTrigger.refresh();
+      });
+    }
 
     // -- INITIAL ANIMATION --
+    const initialVisible = allItems.filter(item => !item.classList.contains('hidden'));
     gsap.set(line, { scaleY: 0, transformOrigin: "top center" });
-    gsap.set(items, { autoAlpha: 0, x: -20 });
+    gsap.set(initialVisible, { autoAlpha: 0, x: -20 });
 
-    // Initialize Slider Position
     const updateSlider = (activeBtn: HTMLElement, animate = true) => {
       if (!slider) return;
       const rect = activeBtn.getBoundingClientRect();
@@ -155,21 +220,12 @@ allCareerItems.sort(
       const width = rect.width;
 
       if (animate) {
-        gsap.to(slider, {
-          left: left,
-          width: width,
-          duration: 0.5,
-          ease: 'power3.inOut'
-        });
+        gsap.to(slider, { left: left, width: width, duration: 0.5, ease: 'power3.inOut' });
       } else {
-        gsap.set(slider, {
-          left: left,
-          width: width
-        });
+        gsap.set(slider, { left: left, width: width });
       }
     };
 
-    // Set initial position
     const activeBtn = document.querySelector('.sort-button.active') as HTMLElement;
     if (activeBtn) updateSlider(activeBtn, false);
 
@@ -187,14 +243,8 @@ allCareerItems.sort(
       ease: 'power2.inOut',
     })
     .to(
-      items,
-      { 
-        autoAlpha: 1, 
-        x: 0, 
-        stagger: 0.15, 
-        duration: 0.6,
-        ease: 'power2.out' 
-      },
+      initialVisible,
+      { autoAlpha: 1, x: 0, stagger: 0.15, duration: 0.6, ease: 'power2.out' },
       '-=1.2'
     );
 
@@ -205,7 +255,6 @@ allCareerItems.sort(
 
         const sortType = (button as HTMLElement).dataset.sort;
         
-        // Update UI Classes
         sortButtons.forEach(btn => {
           btn.classList.remove('active', 'text-background');
           btn.classList.add('text-text-secondary');
@@ -213,19 +262,21 @@ allCareerItems.sort(
         button.classList.add('active', 'text-background');
         button.classList.remove('text-text-secondary');
 
-        // Animate Slider
         updateSlider(button as HTMLElement);
 
-        // Animate Out (A bit faster as requested)
-        gsap.to(items, {
+        // Get currently visible items
+        const currentItemsInDom = gsap.utils.toArray('.timeline-item') as HTMLElement[];
+        const visibleItems = currentItemsInDom.filter(i => !i.classList.contains('hidden'));
+
+        gsap.to(visibleItems, {
           autoAlpha: 0,
           y: 5,
           stagger: 0.04,
           duration: 0.3,
           ease: 'power2.in',
           onComplete: () => {
-            // Reorder DOM
-            const sortedItems = [...items].sort((a, b) => {
+            // Sort
+            const sortedItems = [...currentItemsInDom].sort((a, b) => {
               if (sortType === 'chrono') {
                 return Number(b.dataset.date) - Number(a.dataset.date);
               } else {
@@ -233,18 +284,24 @@ allCareerItems.sort(
               }
             });
 
+            // Re-append
             sortedItems.forEach(item => container?.appendChild(item));
-
-            // Animate In (Faster appearance)
-            gsap.fromTo(sortedItems, 
-              { autoAlpha: 0, y: -5 },
-              { 
-                autoAlpha: 1, 
-                y: 0, 
-                stagger: 0.08, 
-                duration: 0.4, 
-                ease: 'power2.out' 
+            
+            // Re-apply classes so only the first `visibleCount` are shown
+            let newlyVisible: HTMLElement[] = [];
+            sortedItems.forEach((item, index) => {
+              if (index < visibleCount) {
+                item.classList.remove('hidden');
+                newlyVisible.push(item);
+              } else {
+                item.classList.add('hidden');
               }
+            });
+
+            // Animate In NEWLY VISIBLE items
+            gsap.fromTo(newlyVisible, 
+              { autoAlpha: 0, y: -5 },
+              { autoAlpha: 1, y: 0, stagger: 0.08, duration: 0.4, ease: 'power2.out', onComplete: () => ScrollTrigger.refresh() }
             );
           }
         });
