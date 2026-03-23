@@ -5,8 +5,22 @@ import ExperienceCard from '@/components/modules/ExperienceCard.astro';
 import SectionTitle from '@/components/ui/SectionTitle.astro';
 
 const allCareerItems: CollectionEntry<'career'>[] = await getCollection('career');
+
+// Relevance order requested by the user
+const relevanceOrder = [
+  'Co-Líder de Proyectos Web',
+  'Tecnicatura Universitaria en Programación',
+  'Tecnicatura Universitaria en Inteligencia Artificial',
+  'Carrera de Desarrollo Frontend & Diseño UX/UI'
+];
+
+const getRelevance = (title: string) => {
+  const index = relevanceOrder.indexOf(title);
+  return index !== -1 ? index : 99;
+};
+
 allCareerItems.sort(
-  (a, b) => b.data.startDate.valueOf() - a.data.startDate.valueOf()
+  (a, b) => getRelevance(a.data.title) - getRelevance(b.data.title)
 );
 ---
 
@@ -21,33 +35,52 @@ allCareerItems.sort(
       />
     </div>
 
+    <!-- SORT CONTROLS -->
+    <div class="flex justify-center -mt-8 mb-4">
+      <div class="sort-control-container p-[1px] bg-border/20 shadow-base overflow-hidden octagonal-shape">
+        <div class="inline-flex glass-panel p-1 sort-control-inner relative overflow-hidden octagonal-shape">
+          
+          <!-- Slider Background -->
+          <div 
+            id="sort-slider" 
+            class="absolute top-1 bottom-1 left-1 bg-text-primary pointer-events-none z-0 octagonal-shape"
+          ></div>
+
+          <button 
+            id="sort-chrono" 
+            data-sort="chrono"
+            class="sort-button px-6 py-2 text-xs md:text-sm font-medium transition-colors duration-500 text-text-secondary z-10 relative octagonal-shape"
+          >
+            Cronológico
+          </button>
+          <button 
+            id="sort-relevance" 
+            data-sort="relevance"
+            class="sort-button active px-6 py-2 text-xs md:text-sm font-medium transition-colors duration-500 text-background z-10 relative octagonal-shape"
+          >
+            Relevancia
+          </button>
+        </div>
+      </div>
+    </div>
+
     <div class="relative">
-      <!-- 
-        LÍNEA DE TIEMPO (FIXED)
-        - w-0.5: 2px de grosor.
-        - bg-border: Color sólido.
-        - left-[19px]: Calculado para centrar con el punto de 16px (16/2 + padding).
-      -->
       <div
         class="timeline-line absolute left-[19px] md:left-6 top-4 bottom-0 w-0.5 -translate-x-1/2 bg-border opacity-60"
       >
       </div>
 
-      <div class="space-y-12">
+      <div id="timeline-container" class="space-y-12">
         {
           allCareerItems.map((item) => (
-            <div class="timeline-item flex gap-6 md:gap-10">
+            <div 
+              class="timeline-item flex gap-6 md:gap-10"
+              data-date={item.data.startDate.valueOf()}
+              data-relevance={getRelevance(item.data.title)}
+            >
               
               <!-- COLUMNA IZQUIERDA (Línea y Punto) -->
               <div class="relative flex flex-col items-center w-10 md:w-12 shrink-0">
-                <!-- 
-                  PUNTO (NODO)
-                  - w-4 h-4 (16px).
-                  - top-8: Alineado con el título.
-                  - z-10: Sobre la línea.
-                  - bg-background: Centro vacío.
-                  - border-text-primary: Borde sólido del color del texto.
-                -->
                 <div class="relative z-10 top-8 w-4 h-4 rounded-full bg-background border-2 border-text-primary shadow-[0_0_10px_rgba(0,0,0,0.2)]"></div>
               </div>
 
@@ -64,22 +97,83 @@ allCareerItems.sort(
   </div>
 </section>
 
+<style>
+  .octagonal-shape {
+    clip-path: polygon(
+      10px 0, 
+      calc(100% - 10px) 0, 
+      100% 10px, 
+      100% calc(100% - 10px), 
+      calc(100% - 10px) 100%, 
+      10px 100%, 
+      0 calc(100% - 10px), 
+      0 10px
+    );
+  }
+
+  /* Para que el clip-path no corte el fondo de vidrio suavemente */
+  .sort-control-inner {
+    background-color: rgb(var(--color-panel-bg) / 0.15);
+    backdrop-filter: blur(var(--blur-base));
+  }
+
+  .sort-button.active {
+    cursor: default;
+  }
+  .sort-button:not(.active):hover {
+    color: rgb(var(--color-text-primary));
+    background-color: rgb(var(--color-text-primary) / 0.1);
+  }
+</style>
+
 <script>
   import gsap from 'gsap';
   import { ScrollTrigger } from 'gsap/ScrollTrigger';
   gsap.registerPlugin(ScrollTrigger);
 
-  function initCareerAnimation() {
+  function initCareer() {
     const section = document.querySelector('.career-section-content');
     if (!section) return;
 
     const line = section.querySelector('.timeline-line');
     const items = gsap.utils.toArray('.timeline-item') as HTMLElement[];
+    const container = document.getElementById('timeline-container');
+    const sortButtons = document.querySelectorAll('.sort-button');
+    const slider = document.getElementById('sort-slider');
 
+    // -- INITIAL ANIMATION --
     gsap.set(line, { scaleY: 0, transformOrigin: "top center" });
     gsap.set(items, { autoAlpha: 0, x: -20 });
 
-    const tl = gsap.timeline({
+    // Initialize Slider Position
+    const updateSlider = (activeBtn: HTMLElement, animate = true) => {
+      if (!slider) return;
+      const rect = activeBtn.getBoundingClientRect();
+      const parentRect = activeBtn.parentElement!.getBoundingClientRect();
+      
+      const left = rect.left - parentRect.left;
+      const width = rect.width;
+
+      if (animate) {
+        gsap.to(slider, {
+          left: left,
+          width: width,
+          duration: 0.5,
+          ease: 'power3.inOut'
+        });
+      } else {
+        gsap.set(slider, {
+          left: left,
+          width: width
+        });
+      }
+    };
+
+    // Set initial position
+    const activeBtn = document.querySelector('.sort-button.active') as HTMLElement;
+    if (activeBtn) updateSlider(activeBtn, false);
+
+    const entranceTl = gsap.timeline({
       scrollTrigger: {
         trigger: section,
         start: 'top 75%',
@@ -87,7 +181,7 @@ allCareerItems.sort(
       },
     });
 
-    tl.to(line, {
+    entranceTl.to(line, {
       scaleY: 1,
       duration: 1.5,
       ease: 'power2.inOut',
@@ -97,14 +191,67 @@ allCareerItems.sort(
       { 
         autoAlpha: 1, 
         x: 0, 
-        stagger: 0.2, 
-        duration: 0.8,
+        stagger: 0.15, 
+        duration: 0.6,
         ease: 'power2.out' 
       },
       '-=1.2'
     );
+
+    // -- SORTING LOGIC --
+    sortButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        if (button.classList.contains('active')) return;
+
+        const sortType = (button as HTMLElement).dataset.sort;
+        
+        // Update UI Classes
+        sortButtons.forEach(btn => {
+          btn.classList.remove('active', 'text-background');
+          btn.classList.add('text-text-secondary');
+        });
+        button.classList.add('active', 'text-background');
+        button.classList.remove('text-text-secondary');
+
+        // Animate Slider
+        updateSlider(button as HTMLElement);
+
+        // Animate Out (A bit faster as requested)
+        gsap.to(items, {
+          autoAlpha: 0,
+          y: 5,
+          stagger: 0.04,
+          duration: 0.3,
+          ease: 'power2.in',
+          onComplete: () => {
+            // Reorder DOM
+            const sortedItems = [...items].sort((a, b) => {
+              if (sortType === 'chrono') {
+                return Number(b.dataset.date) - Number(a.dataset.date);
+              } else {
+                return Number(a.dataset.relevance) - Number(b.dataset.relevance);
+              }
+            });
+
+            sortedItems.forEach(item => container?.appendChild(item));
+
+            // Animate In (Faster appearance)
+            gsap.fromTo(sortedItems, 
+              { autoAlpha: 0, y: -5 },
+              { 
+                autoAlpha: 1, 
+                y: 0, 
+                stagger: 0.08, 
+                duration: 0.4, 
+                ease: 'power2.out' 
+              }
+            );
+          }
+        });
+      });
+    });
   }
 
-  document.addEventListener('astro:page-load', initCareerAnimation);
-  document.addEventListener('DOMContentLoaded', initCareerAnimation);
-</script>
+  document.addEventListener('astro:page-load', initCareer);
+  document.addEventListener('DOMContentLoaded', initCareer);
+</script>
