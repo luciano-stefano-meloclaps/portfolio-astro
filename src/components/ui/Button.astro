@@ -5,9 +5,10 @@ interface Props {
   variant?: 'primary' | 'secondary';
   class?: string;
   target?: '_blank' | '_self' | '_parent' | '_top';
+  [key: string]: any;
 }
 
-const { href, variant = 'primary', class: className, target } = Astro.props;
+const { href, variant = 'primary', class: className, target, ...rest } = Astro.props;
 
 const Tag = href ? 'a' : 'button';
 
@@ -40,6 +41,7 @@ const variantClasses = {
   target={target}
   style={borderStyle}
   class:list={[baseClasses, variantClasses[variant], className]}
+  {...rest}
 >
   <!-- Z-index para asegurar que el texto esté sobre cualquier efecto de fondo -->
   <span class="relative z-10 flex items-center gap-x-2">
