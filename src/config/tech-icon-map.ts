@@ -28,6 +28,7 @@ import {
   IconPalette,
   IconCode,
   IconUsers,
+  IconSeo,
 } from '@tabler/icons-react';
 
 // IMPORTAMOS LOS ICONOS CUSTOM
@@ -67,6 +68,7 @@ export const techIconMap: Record<string, any> = {
   vite: IconBrandVite,
   figma: IconBrandFigma,
   trello: IconBrandTrello,
+  seo: IconSeo,
 
   // --- CONCEPTOS ---
   'entity framework': IconDatabase,
