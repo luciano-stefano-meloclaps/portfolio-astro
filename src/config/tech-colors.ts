@@ -33,6 +33,7 @@ export const techColorMap: Record<string, string> = {
   gitlab: '#FC6D26', // Naranja oficial GitLab
   docker: '#2496ED',
   figma: '#F24E1E',
+  seo: '#44b09a', // Mint — SEO/Rendimiento técnico
 
   // --- LIBRERÍAS & CONCEPTOS ---
   bootstrap: '#7952B3', // Violeta oficial Bootstrap
