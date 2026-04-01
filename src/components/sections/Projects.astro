@@ -13,9 +13,12 @@ import { PROJECT_FILTERS } from '@/config/filter-list';
 import { normalizeTechName, normalizeTechArray } from '@/lib/normalizeTech';
 
 const allProjects = await getCollection('projects');
-allProjects.sort(
-  (a, b) => b.data.publishDate.valueOf() - a.data.publishDate.valueOf()
-);
+allProjects.sort((a, b) => {
+  const aLive = !!a.data.demoUrl;
+  const bLive = !!b.data.demoUrl;
+  if (aLive !== bLive) return aLive ? -1 : 1;
+  return b.data.publishDate.valueOf() - a.data.publishDate.valueOf();
+});
 
 const usedTechsInProjects = new Set(
   allProjects

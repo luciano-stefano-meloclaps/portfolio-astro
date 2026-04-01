@@ -5,6 +5,8 @@ import type { CollectionEntry } from 'astro:content';
 import Card from '@/components/ui/Card.astro';
 import StatusBadge from '@/components/ui/StatusBadge.astro';
 import TechChip from '@/components/ui/TechChip.astro';
+import StatusChip from '@/components/ui/StatusChip.astro';
+import { IconWorld } from '@tabler/icons-react';
 import { techIconMap } from '@/config/tech-icon-map';
 import { normalizeTechName } from '@/lib/normalizeTech';
 
@@ -53,6 +55,11 @@ const isLCP = index === 0;
         class="absolute inset-0 bg-black/0 transition-colors duration-300 group-hover:bg-black/10"
       >
       </div>
+      {demoUrl && (
+        <div class="absolute left-4 top-4 z-20 scale-[0.85] origin-top-left md:scale-100">
+          <StatusChip Icon={IconWorld} label="Status" value="Deploy" variant="rose" surface="glass" />
+        </div>
+      )}
     </div>
 
     <div class="flex flex-grow flex-col p-6">
@@ -101,7 +108,6 @@ const isLCP = index === 0;
         class="mt-auto flex items-center justify-between border-t border-border pt-4"
       >
         <StatusBadge status={status} />
-        {demoUrl && <StatusBadge status="Demo" />}
       </div>
     </div>
   </Card>
