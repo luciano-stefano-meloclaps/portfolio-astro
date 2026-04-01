@@ -18,6 +18,7 @@ interface Props {
   label: string;
   value: string;
   variant?: Variant;
+  surface?: 'default' | 'glass' | 'solid';
   class?: string;
 }
 
@@ -26,8 +27,15 @@ const {
   label,
   value,
   variant = 'positive',
+  surface = 'default',
   class: className,
 } = Astro.props;
+
+const surfaceConfig: Record<'default' | 'glass' | 'solid', string> = {
+  default: 'bg-panel/20 dark:bg-panel/10 border-border backdrop-blur-[var(--blur-base)]',
+  glass: 'bg-background/80 border-white/10 backdrop-blur-xl shadow-[0_4px_12px_rgba(0,0,0,0.5)]',
+  solid: 'bg-panel border-border',
+};
 
 const variantConfig: Record<
   Variant,
@@ -81,8 +89,8 @@ const theme = variantConfig[variant];
 <div
   class:list={[
     'inline-flex select-none items-center justify-between gap-x-3 rounded-small px-3 py-1.5 transition-colors duration-300',
-    'bg-panel/20 dark:bg-panel/10 border border-border',
-    'backdrop-blur-[var(--blur-base)]',
+    'border',
+    surfaceConfig[surface],
     'shadow-sm',
     className,
   ]}
@@ -99,17 +107,56 @@ const theme = variantConfig[variant];
     </div>
   </div>
 
-  <div class="relative ml-1 flex h-1.5 w-1.5 items-center justify-center">
-    <span class:list={['absolute h-1.5 w-1.5 rounded-full', theme.dot]}></span>
+  <div class="relative ml-2 flex h-2 w-2 items-center justify-center">
+    <!-- Halo Permanente (Sutil volumen base) -->
     <span
       class:list={[
-        'absolute h-full w-full animate-ping rounded-full opacity-75',
+        'absolute h-3.5 w-3.5 rounded-full opacity-40 blur-[3px]',
         theme.dot,
       ]}></span>
+
+    <!-- Animación Ring (Expansión sofisticada tipo radar con curva de Bézier) -->
     <span
       class:list={[
-        'absolute h-2 w-2 rounded-full opacity-50 blur-[2px]',
+        'absolute h-2.5 w-2.5 rounded-full status-ring',
         theme.dot,
       ]}></span>
+
+    <!-- Punto Base (Respiración elegante en el núcleo) -->
+    <span class:list={['absolute h-1.5 w-1.5 rounded-full status-core shadow-sm', theme.dot]}></span>
   </div>
 </div>
+
+<style>
+  /* Animación sofisticada: Respiración sutil en el núcleo */
+  .status-core {
+    animation: corePulse 1.8s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  /* Expansión tipo "Radar" o latido de alta precisión */
+  .status-ring {
+    animation: ringPulse 1.8s cubic-bezier(0.165, 0.84, 0.44, 1) infinite;
+  }
+
+  @keyframes corePulse {
+    0%, 100% { 
+      transform: scale(0.95); 
+      opacity: 0.8; 
+    }
+    50% { 
+      transform: scale(1.1); 
+      opacity: 1; 
+    }
+  }
+
+  @keyframes ringPulse {
+    0% { 
+      transform: scale(0.5); 
+      opacity: 0.8; 
+    }
+    100% { 
+      transform: scale(3.5); 
+      opacity: 0; 
+    }
+  }
+</style>

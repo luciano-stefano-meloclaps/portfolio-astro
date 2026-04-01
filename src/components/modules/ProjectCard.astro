@@ -5,6 +5,7 @@ import Card from '@/components/ui/Card.astro';
 import Button from '@/components/ui/Button.astro';
 import StatusBadge from '@/components/ui/StatusBadge.astro';
 import TechChip from '@/components/ui/TechChip.astro';
+import StatusChip from '@/components/ui/StatusChip.astro';
 
 import { normalizeTechName } from '@/lib/normalizeTech';
 import { techIconMap } from '@/config/tech-icon-map';
@@ -17,6 +18,7 @@ import {
   IconX,
   IconChevronDown,
   IconExternalLink,
+  IconWorld,
 } from '@tabler/icons-react';
 import type { CollectionEntry } from 'astro:content';
 
@@ -87,6 +89,12 @@ const hasHiddenFeatures = hiddenFeatures.length > 0;
           }
         </div>
 
+        {demoUrl && (
+          <div class="absolute left-5 top-5 z-20">
+            <StatusChip Icon={IconWorld} label="Status" value="Deploy" variant="rose" surface="glass" />
+          </div>
+        )}
+
         {
           images.length > 1 && (
             <>
@@ -115,9 +123,8 @@ const hasHiddenFeatures = hiddenFeatures.length > 0;
       <!-- CONTENIDO (Sin cambios) -->
       <div class="content-wrapper relative flex flex-col bg-background p-6 md:p-10">
         <div class="stagger-item mb-8">
-          <div class="mb-4 flex items-center justify-between">
+          <div class="mb-4 flex items-center justify-start">
             <StatusBadge status={status} />
-            {demoUrl && <StatusBadge status="Demo" />}
           </div>
           <h3 class="mb-4 text-3xl font-bold leading-tight tracking-tight text-text-primary md:text-4xl">{title}</h3>
           {description.split('\n\n').map((paragraph: string) => (
