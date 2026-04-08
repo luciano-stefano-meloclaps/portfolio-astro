@@ -1,7 +1,7 @@
 ---
 // src/components/sections/ParallaxSection.astro
 import { Image } from 'astro:assets';
-import parallaxBg from '@/assets/images/parallax/imgParallax.jpg';
+import parallaxBg from '@/assets/images/parallax/img-parallax.jpg';
 
 interface Props {
   phrase?: string;
@@ -10,71 +10,72 @@ interface Props {
 }
 
 const { 
-  phrase = "Transformando fragmentos en soluciones de alta performance",
+  phrase = "No creo en el diseño perfecto. Creo en el diseño que evoluciona.",
   author = "Linus Torvalds",
   sectionLabel = "Cita inspiracional con efecto visual"
 } = Astro.props;
 ---
 
-<section 
-  id="parallax-quote"
-  class="relative h-[50vh] md:h-[70vh] overflow-hidden flex items-center justify-center border-y border-border/10 group"
-  aria-label={sectionLabel}
->
-  {/* Background Layer: Optimized Image with Parallax Bleed */}
-  <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
-    <Image 
-      src={parallaxBg} 
-      alt="" 
-      class="parallax-img absolute w-full h-[180%] object-cover top-[-40%] left-0"
-      widths={[640, 1024, 1920]}
-      sizes="100vw"
-      quality={90}
-      loading="lazy"
-      decoding="async"
-    />
-    
-    {/* High-quality UI Overlay */}
-    <div class="absolute inset-0 z-10 bg-background/50 backdrop-blur-[0.5px]"></div>
-    
-    {/* Atmospheric Vignette */}
-    <div class="absolute inset-0 z-20 bg-gradient-to-b from-background via-transparent to-background opacity-80"></div>
-  </div>
-
-  {/* Content Layer: Semantic and Animated */}
-  <div class="container-narrow relative z-30 px-6 text-center">
-    <blockquote class="m-0 p-0 border-none">
-      <div class="overflow-hidden">
-        <h2 
-          id="parallax-text"
-          class="text-2xl md:text-4xl lg:text-5xl font-bold text-text-primary tracking-tight leading-tight md:leading-snug p-0"
-        >
-          <span class="block opacity-0 translate-y-12 transition-all duration-700 ease-out">
-            {phrase}
-          </span>
-        </h2>
-      </div>
-      
-      <div class="overflow-hidden mt-4">
-        <cite 
-          id="parallax-author"
-          class="not-italic text-sm md:text-base font-medium text-text-secondary tracking-widest uppercase opacity-0 translate-y-4 block"
-        >
-          — {author}
-        </cite>
-      </div>
-    </blockquote>
-
-    {/* Structural Divider */}
-    <div 
-      id="parallax-divider"
-      class="mt-10 flex justify-center opacity-0 scale-x-0"
-      aria-hidden="true"
-    >
-      <div class="h-px w-32 bg-gradient-to-r from-transparent via-text-primary/40 to-transparent"></div>
+<div class="py-16 md:py-24 section-parallax-wrapper overflow-hidden">
+  {/* ⚡ ARCHITECTURE: Full-width container with strict containment for layout stability */}
+  <section 
+    id="parallax-quote"
+    class="relative w-full h-[600px] md:h-[800px] overflow-hidden flex items-center justify-center border-y border-white/10 group bg-black"
+    aria-label={sectionLabel}
+  >
+    {/* Background Layer: Re-balanced image with zero-gap math 
+        Fixed object-cover class for proper scale handling
+    */}
+    <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+      <Image 
+        src={parallaxBg} 
+        alt="" 
+        class="parallax-img absolute w-full h-[160%] object-cover top-[-50%] left-0"
+        widths={[640, 1024, 1920, 2560]}
+        sizes="100vw"
+        quality={90}
+        loading="lazy"
+        decoding="async"
+      />
+      {/* Structural contrast overlay with back-brightness for premium texture preservation */}
+      <div class="absolute inset-0 z-10 bg-black/30 backdrop-brightness-75"></div>
     </div>
-  </div>
-</section>
+
+    {/* Content Layer: Semantic and Animated */}
+    <div class="relative z-30 px-6 md:px-12 text-center max-w-4xl mx-auto">
+      <blockquote class="m-0 p-0 border-none">
+        <div class="overflow-hidden">
+          <h2 
+            id="parallax-text"
+            class="text-2xl md:text-4xl lg:text-5xl font-bold text-white tracking-tight leading-tight md:leading-snug p-0 drop-shadow-2xl"
+          >
+            <span class="block opacity-0 translate-y-12 transition-all duration-700 ease-out">
+              {phrase}
+            </span>
+          </h2>
+        </div>
+        
+        <div class="overflow-hidden mt-8">
+          <cite 
+            id="parallax-author"
+            class="italic text-sm md:text-base lg:text-lg font-medium text-white/90 tracking-[0.2em] uppercase opacity-0 translate-y-4 block drop-shadow-lg"
+          >
+            — {author} —
+          </cite>
+        </div>
+      </blockquote>
+
+      {/* Structural Divider */}
+      <div 
+        id="parallax-divider"
+        class="mt-12 flex justify-center opacity-0 scale-x-0"
+        aria-hidden="true"
+      >
+        <div class="h-px w-48 bg-gradient-to-r from-transparent via-white/40 to-transparent"></div>
+      </div>
+    </div>
+  </section>
+</div>
 
 <script>
   import gsap from 'gsap';
@@ -83,16 +84,19 @@ const {
   gsap.registerPlugin(ScrollTrigger);
 
   const initParallax = () => {
-    // ⚡ ARCHITECTURE: Guard clause for reduced motion preferences (A11y Standard)
-    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    
     const section = document.querySelector('#parallax-quote');
-    const image = section?.querySelector('.parallax-img');
-    const text = section?.querySelector('#parallax-text span');
-    
     if (!section) return;
 
-    // Default static visibility for users with reduced motion
+    // ⚡ DEBT PREVENTION: Cleanup existing triggers to prevent memory leaks during SPA navigation (Astro View Transitions)
+    const existingTriggers = ScrollTrigger.getAll();
+    existingTriggers.forEach(trigger => {
+      if (trigger.vars.trigger === section) trigger.kill();
+    });
+
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    const image = section.querySelector('.parallax-img');
+    const text = section.querySelector('#parallax-text span');
+    
     if (prefersReducedMotion) {
       if (text) gsap.set(text, { opacity: 1, y: 0 });
       if (section.querySelector('#parallax-author')) gsap.set(section.querySelector('#parallax-author'), { opacity: 1, y: 0 });
@@ -102,19 +106,20 @@ const {
 
     if (!image) return;
 
-    // ⚡ PERFORMANCE: Background Parallax using high-precision GPU transforms
+    // ⚡ CORE LOGIC: Moving 40% of container height (25% of 160% image) 
+    // Range starts at -50%, ends at -10%. Top edge always safely out of view.
     gsap.to(image, {
-      y: "40%", 
+      y: "25%", 
       ease: "none",
       scrollTrigger: {
         trigger: section,
         start: "top bottom",
         end: "bottom top",
-        scrub: 0.8,
+        scrub: 1.8,
       }
     });
 
-    // ⚡ MOTION: Content stagger for high-end UI feel
+    // ⚡ MOTION: Entrance animations for content
     if (text) {
       const author = section.querySelector('#parallax-author');
       const divider = section.querySelector('#parallax-divider');
@@ -122,7 +127,7 @@ const {
       const tl = gsap.timeline({
         scrollTrigger: {
           trigger: section,
-          start: "top 85%",
+          start: "top 80%",
           toggleActions: "play none none reverse"
         }
       });
@@ -130,7 +135,7 @@ const {
       tl.to(text, {
         opacity: 1,
         y: 0,
-        duration: 1.4,
+        duration: 1.2,
         ease: "power4.out"
       })
       .to(author, {
@@ -138,18 +143,20 @@ const {
         y: 0,
         duration: 1,
         ease: "power3.out"
-      }, "-=1")
+      }, "-=0.9")
       .to(divider, {
         opacity: 1,
         scaleX: 1,
-        duration: 1.8,
+        duration: 2,
         ease: "expo.out"
-      }, "-=0.8");
+      }, "-=0.7");
     }
   };
 
+  // Lifecycle management for Astro
   document.addEventListener('astro:page-load', initParallax);
   
+  // Browser fallback
   if (document.readyState === 'loading') {
     document.addEventListener('DOMContentLoaded', initParallax);
   } else {
@@ -165,6 +172,12 @@ const {
   
   .parallax-img {
     will-change: transform;
+    transform: translate3d(0, 0, 0); /* Force GPU layer promotion */
     pointer-events: none;
+  }
+
+  .section-parallax-wrapper {
+    perspective: 1200px;
+    backface-visibility: hidden;
   }
 </style>
