@@ -1,0 +1,170 @@
+---
+// src/components/sections/ParallaxSection.astro
+import { Image } from 'astro:assets';
+import parallaxBg from '@/assets/images/parallax/imgParallax.jpg';
+
+interface Props {
+  phrase?: string;
+  author?: string;
+  sectionLabel?: string;
+}
+
+const { 
+  phrase = "Transformando fragmentos en soluciones de alta performance",
+  author = "Linus Torvalds",
+  sectionLabel = "Cita inspiracional con efecto visual"
+} = Astro.props;
+---
+
+<section 
+  id="parallax-quote"
+  class="relative h-[50vh] md:h-[70vh] overflow-hidden flex items-center justify-center border-y border-border/10 group"
+  aria-label={sectionLabel}
+>
+  {/* Background Layer: Optimized Image with Parallax Bleed */}
+  <div class="absolute inset-0 z-0 overflow-hidden" aria-hidden="true">
+    <Image 
+      src={parallaxBg} 
+      alt="" 
+      class="parallax-img absolute w-full h-[180%] object-cover top-[-40%] left-0"
+      widths={[640, 1024, 1920]}
+      sizes="100vw"
+      quality={90}
+      loading="lazy"
+      decoding="async"
+    />
+    
+    {/* High-quality UI Overlay */}
+    <div class="absolute inset-0 z-10 bg-background/50 backdrop-blur-[0.5px]"></div>
+    
+    {/* Atmospheric Vignette */}
+    <div class="absolute inset-0 z-20 bg-gradient-to-b from-background via-transparent to-background opacity-80"></div>
+  </div>
+
+  {/* Content Layer: Semantic and Animated */}
+  <div class="container-narrow relative z-30 px-6 text-center">
+    <blockquote class="m-0 p-0 border-none">
+      <div class="overflow-hidden">
+        <h2 
+          id="parallax-text"
+          class="text-2xl md:text-4xl lg:text-5xl font-bold text-text-primary tracking-tight leading-tight md:leading-snug p-0"
+        >
+          <span class="block opacity-0 translate-y-12 transition-all duration-700 ease-out">
+            {phrase}
+          </span>
+        </h2>
+      </div>
+      
+      <div class="overflow-hidden mt-4">
+        <cite 
+          id="parallax-author"
+          class="not-italic text-sm md:text-base font-medium text-text-secondary tracking-widest uppercase opacity-0 translate-y-4 block"
+        >
+          — {author}
+        </cite>
+      </div>
+    </blockquote>
+
+    {/* Structural Divider */}
+    <div 
+      id="parallax-divider"
+      class="mt-10 flex justify-center opacity-0 scale-x-0"
+      aria-hidden="true"
+    >
+      <div class="h-px w-32 bg-gradient-to-r from-transparent via-text-primary/40 to-transparent"></div>
+    </div>
+  </div>
+</section>
+
+<script>
+  import gsap from 'gsap';
+  import { ScrollTrigger } from 'gsap/ScrollTrigger';
+
+  gsap.registerPlugin(ScrollTrigger);
+
+  const initParallax = () => {
+    // ⚡ ARCHITECTURE: Guard clause for reduced motion preferences (A11y Standard)
+    const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    
+    const section = document.querySelector('#parallax-quote');
+    const image = section?.querySelector('.parallax-img');
+    const text = section?.querySelector('#parallax-text span');
+    
+    if (!section) return;
+
+    // Default static visibility for users with reduced motion
+    if (prefersReducedMotion) {
+      if (text) gsap.set(text, { opacity: 1, y: 0 });
+      if (section.querySelector('#parallax-author')) gsap.set(section.querySelector('#parallax-author'), { opacity: 1, y: 0 });
+      if (section.querySelector('#parallax-divider')) gsap.set(section.querySelector('#parallax-divider'), { opacity: 1, scaleX: 1 });
+      return;
+    }
+
+    if (!image) return;
+
+    // ⚡ PERFORMANCE: Background Parallax using high-precision GPU transforms
+    gsap.to(image, {
+      y: "40%", 
+      ease: "none",
+      scrollTrigger: {
+        trigger: section,
+        start: "top bottom",
+        end: "bottom top",
+        scrub: 0.8,
+      }
+    });
+
+    // ⚡ MOTION: Content stagger for high-end UI feel
+    if (text) {
+      const author = section.querySelector('#parallax-author');
+      const divider = section.querySelector('#parallax-divider');
+
+      const tl = gsap.timeline({
+        scrollTrigger: {
+          trigger: section,
+          start: "top 85%",
+          toggleActions: "play none none reverse"
+        }
+      });
+
+      tl.to(text, {
+        opacity: 1,
+        y: 0,
+        duration: 1.4,
+        ease: "power4.out"
+      })
+      .to(author, {
+        opacity: 1,
+        y: 0,
+        duration: 1,
+        ease: "power3.out"
+      }, "-=1")
+      .to(divider, {
+        opacity: 1,
+        scaleX: 1,
+        duration: 1.8,
+        ease: "expo.out"
+      }, "-=0.8");
+    }
+  };
+
+  document.addEventListener('astro:page-load', initParallax);
+  
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', initParallax);
+  } else {
+    initParallax();
+  }
+</script>
+
+<style>
+  #parallax-quote {
+    will-change: transform;
+    contain: paint;
+  }
+  
+  .parallax-img {
+    will-change: transform;
+    pointer-events: none;
+  }
+</style>
