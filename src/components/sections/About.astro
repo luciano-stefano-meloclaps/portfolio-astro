@@ -105,55 +105,222 @@ import { IconPackages, IconSitemap, IconBrain } from '@tabler/icons-react';
       </Card>
     </div>
 
-    <!-- PANEL DE TOOLKIT -->
-    <Card>
+    <!-- PANEL DE TOOLKIT (SISTEMA ORBIT) -->
+    <Card class="relative overflow-hidden">
       <h3
-        class="text-center font-sans text-sm uppercase tracking-widest text-text-secondary"
+        class="text-center font-sans text-xs uppercase tracking-[0.3em] text-text-secondary/60"
       >
         Toolkit Principal
       </h3>
-      <div
-        class="mt-10 grid grid-cols-1 gap-10 text-center md:grid-cols-2 md:text-left"
-      >
-        <!-- Columna de Lenguajes y Frameworks -->
-        <div class="space-y-4">
-          <h4 class="font-bold text-text-primary">Lenguajes & Frameworks</h4>
-          <div class="flex flex-wrap justify-center gap-2 md:justify-start">
-            <TechChip Icon={techIconMap['react']} name="React" />
-            <TechChip Icon={techIconMap['astro']} name="Astro" />
-            <TechChip Icon={techIconMap['.net']} name=".NET" />
-            <TechChip Icon={techIconMap['typescript']} name="TypeScript" />
-            <TechChip Icon={techIconMap['c#']} name="C#" />
-            <TechChip Icon={techIconMap['javascript']} name="Javascript" />
+
+      <div class="orbit-container mt-12 pb-6">
+        <!-- Row 1: Logic & Core (LTR) -->
+        <div class="orbit-wrapper" data-speed="1.1">
+          <div class="orbit-track track-ltr">
+            {[...Array(2)].map(() => (
+              <div class="orbit-group">
+                <TechChip Icon={techIconMap['.net']} name=".NET" />
+                <TechChip Icon={techIconMap['c#']} name="C#" />
+                <TechChip Icon={techIconMap['python']} name="Python" />
+                <TechChip Icon={techIconMap['typescript']} name="TypeScript" />
+                <TechChip Icon={techIconMap['sql']} name="SQL" />
+                <TechChip Icon={techIconMap['javascript']} name="Javascript" />
+              </div>
+            ))}
           </div>
         </div>
 
-        <!-- Columna de Herramientas y Plataformas -->
-        <div class="space-y-4">
-          <h4 class="font-bold text-text-primary">
-            Herramientas & Plataformas
-          </h4>
-          <div class="flex flex-wrap justify-center gap-2 md:justify-start">
-            <TechChip Icon={techIconMap['github']} name="GitHub" />
-            <TechChip Icon={techIconMap['vite']} name="Vite" />
-            <TechChip Icon={techIconMap['figma']} name="Figma" />
-            <TechChip Icon={techIconMap['mysql']} name="MySQL" />
-            <TechChip Icon={techIconMap['tailwind']} name="Tailwind" />
-            <TechChip Icon={techIconMap['bootstrap']} name="Bootstrap" />
+        <!-- Row 2: Frontend & Styling (RTL) -->
+        <div class="orbit-wrapper mt-4" data-speed="0.85">
+          <div class="orbit-track track-rtl">
+            {[...Array(2)].map(() => (
+              <div class="orbit-group">
+                <TechChip Icon={techIconMap['react']} name="React" />
+                <TechChip Icon={techIconMap['astro']} name="Astro" />
+                <TechChip Icon={techIconMap['tailwind']} name="Tailwind" />
+                <TechChip Icon={techIconMap['bootstrap']} name="Bootstrap" />
+                <TechChip Icon={techIconMap['sass']} name="Sass" />
+                <TechChip Icon={techIconMap['vite']} name="Vite" />
+              </div>
+            ))}
           </div>
         </div>
 
-        {
-          /*     <!-- Columna Librerias -->
-        <div class="space-y-4">
-          <h4 class="font-bold text-text-primary">Librerias</h4>
-          <div class="flex flex-wrap justify-center gap-2 md:justify-start">
-            <TechChip Icon={techIconMap['tailwind']} name="Tailwind" />
-            <TechChip Icon={techIconMap['bootstrap']} name="Bootstrap" />
+        <!-- Row 3: Tools & Ops (LTR) -->
+        <div class="orbit-wrapper mt-4" data-speed="1.0">
+          <div class="orbit-track track-ltr">
+            {[...Array(2)].map(() => (
+              <div class="orbit-group">
+                <TechChip Icon={techIconMap['figma']} name="Figma" />
+                <TechChip Icon={techIconMap['github']} name="GitHub" />
+                <TechChip Icon={techIconMap['docker']} name="Docker" />
+                <TechChip Icon={techIconMap['seo']} name="SEO" />
+                <TechChip Icon={techIconMap['git']} name="Git" />
+                <TechChip Icon={techIconMap['trello']} name="Trello" />
+              </div>
+            ))}
           </div>
-        </div>*/
-        }
+        </div>
       </div>
     </Card>
   </div>
 </section>
+
+<script>
+  import gsap from 'gsap';
+
+  /**
+   * SEAMLESS HORIZONTAL LOOP HELPER
+   * Logic: Usamos dos grupos idénticos sin gap entre ellos en el contenedor padre.
+   * El gap se maneja internamente en el grupo mediante padding-right.
+   * De esta forma, el punto de reset (-50%) es matemáticamente idéntico al inicio (0%).
+   */
+  function initOrbit() {
+    const wrappers = document.querySelectorAll('.orbit-wrapper');
+    const container = document.querySelector('.orbit-container');
+    
+    if (!container) return;
+
+    wrappers.forEach((wrapper) => {
+      const track = wrapper.querySelector('.orbit-track') as HTMLElement;
+      if (!track) return;
+
+      const speed = parseFloat(wrapper.getAttribute('data-speed') || '1');
+      const isRTL = track.classList.contains('track-rtl');
+      
+      // Configuramos el estado inicial limpio
+      gsap.set(track, { x: 0, xPercent: 0 });
+
+      const xTarget = isRTL ? -50 : 0;
+      const xStart = isRTL ? 0 : -50;
+      
+      // Animación de loop continuo
+      const horizontalTween = gsap.fromTo(track, 
+        { xPercent: xStart },
+        { 
+          xPercent: xTarget, 
+          duration: 40 / speed, 
+          ease: "none", 
+          repeat: -1,
+          // Forzar renderizado para evitar jumps por rounding del navegador
+          force3D: true
+        }
+      );
+
+      // Efecto "Floating" ultra sutil e independiente
+      const items = track.querySelectorAll('.orbit-group > *');
+      items.forEach((item, index) => {
+        gsap.to(item, {
+          y: "random(-2, 2)",
+          duration: "random(3, 5)",
+          repeat: -1,
+          yoyo: true,
+          ease: "sine.inOut",
+          delay: index * 0.2
+        });
+      });
+
+      // Control interactivo de velocidad (Braking)
+      wrapper.addEventListener('mouseenter', () => {
+        gsap.to(horizontalTween, { timeScale: 0.15, duration: 1.2, ease: "power3.out" });
+      });
+
+      wrapper.addEventListener('mouseleave', () => {
+        gsap.to(horizontalTween, { timeScale: 1, duration: 1.5, ease: "power3.inOut" });
+      });
+
+      // Manejo sofisticado de hover por chip
+      items.forEach(item => {
+        item.addEventListener('mouseenter', () => {
+          gsap.to(item, { 
+            scale: 1.05, 
+            zIndex: 10,
+            duration: 0.4, 
+            ease: "power3.out",
+            overwrite: "auto"
+          });
+        });
+        item.addEventListener('mouseleave', () => {
+          gsap.to(item, { 
+            scale: 1, 
+            zIndex: 1, 
+            duration: 0.5, 
+            ease: "power3.inOut",
+            overwrite: "auto"
+          });
+        });
+      });
+    });
+  }
+
+  // Asegurar reinicio en navegaciones de Astro
+  document.addEventListener('astro:page-load', initOrbit);
+  // Inicialización inmediata
+  initOrbit();
+</script>
+
+<style>
+  .orbit-container {
+    position: relative;
+    width: 100%;
+    overflow: hidden;
+    /* Mascaras de precisión para fades suaves */
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      black 15%,
+      black 85%,
+      transparent
+    );
+  }
+
+  .orbit-wrapper {
+    display: flex;
+    overflow: hidden;
+    user-select: none;
+  }
+
+  .orbit-track {
+    display: flex;
+    flex-shrink: 0;
+    /* CRÍTICO: Gap 0 para que los grupos se toquen exactamente */
+    gap: 0;
+    padding: 0.75rem 0;
+    width: max-content;
+    will-change: transform;
+  }
+
+  .orbit-group {
+    display: flex;
+    flex-shrink: 0;
+    gap: 1.5rem;
+    align-items: center;
+    /* CRÍTICO: El padding-right debe ser IDENTICO al gap para que el loop sea perfecto */
+    padding-right: 1.5rem;
+  }
+
+  /* Efecto de foco sutil */
+  .orbit-container:hover .orbit-wrapper:not(:hover) {
+    opacity: 0.7;
+    filter: saturate(0.8);
+  }
+
+  @media (max-width: 768px) {
+    .orbit-container {
+      mask-image: linear-gradient(
+        to right,
+        transparent,
+        black 5%,
+        black 95%,
+        transparent
+      );
+    }
+  }
+</style>
