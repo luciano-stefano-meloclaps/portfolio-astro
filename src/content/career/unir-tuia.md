@@ -3,7 +3,7 @@ type: 'Education'
 title: 'Tecnicatura Universitaria en Inteligencia Artificial'
 entity: 'Universidad Nacional de Rosario (UNR)'
 location: 'Rosario, Argentina'
-startDate: 2025-03-01
+startDate: 2026-03-01
 contractType: 'Grado Universitario'
 description: 'Formación universitaria enfocada en los fundamentos matemáticos y lógicos del Machine Learning. El objetivo es adquirir la capacidad técnica para integrar modelos predictivos y algoritmos inteligentes dentro de arquitecturas de software robustas.'
 achievements:

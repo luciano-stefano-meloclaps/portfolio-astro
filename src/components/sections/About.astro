@@ -49,8 +49,8 @@ import { IconPackages, IconSitemap, IconBrain } from '@tabler/icons-react';
       </Card>
 
       <div class="space-y-8">
-        <StatCard value="10+" label="Proyectos de todo tipo" />
-        <StatCard value="3+" label="Años Programando" />
+        <StatCard value="15+" label="Proyectos de todo tipo" />
+        <StatCard value="5+" label="Años Programando" />
       </div>
     </div>
 
@@ -117,48 +117,60 @@ import { IconPackages, IconSitemap, IconBrain } from '@tabler/icons-react';
         <!-- Row 1: Logic & Core (LTR) -->
         <div class="orbit-wrapper" data-speed="1.1">
           <div class="orbit-track track-ltr">
-            {[...Array(2)].map(() => (
-              <div class="orbit-group">
-                <TechChip Icon={techIconMap['.net']} name=".NET" />
-                <TechChip Icon={techIconMap['c#']} name="C#" />
-                <TechChip Icon={techIconMap['python']} name="Python" />
-                <TechChip Icon={techIconMap['typescript']} name="TypeScript" />
-                <TechChip Icon={techIconMap['sql']} name="SQL" />
-                <TechChip Icon={techIconMap['javascript']} name="Javascript" />
-              </div>
-            ))}
+            {
+              [...Array(2)].map(() => (
+                <div class="orbit-group">
+                  <TechChip Icon={techIconMap['.net']} name=".NET" />
+                  <TechChip Icon={techIconMap['c#']} name="C#" />
+                  <TechChip Icon={techIconMap['python']} name="Python" />
+                  <TechChip
+                    Icon={techIconMap['typescript']}
+                    name="TypeScript"
+                  />
+                  <TechChip Icon={techIconMap['sql']} name="SQL" />
+                  <TechChip
+                    Icon={techIconMap['javascript']}
+                    name="Javascript"
+                  />
+                </div>
+              ))
+            }
           </div>
         </div>
 
         <!-- Row 2: Frontend & Styling (RTL) -->
         <div class="orbit-wrapper mt-4" data-speed="0.85">
           <div class="orbit-track track-rtl">
-            {[...Array(2)].map(() => (
-              <div class="orbit-group">
-                <TechChip Icon={techIconMap['react']} name="React" />
-                <TechChip Icon={techIconMap['astro']} name="Astro" />
-                <TechChip Icon={techIconMap['tailwind']} name="Tailwind" />
-                <TechChip Icon={techIconMap['bootstrap']} name="Bootstrap" />
-                <TechChip Icon={techIconMap['sass']} name="Sass" />
-                <TechChip Icon={techIconMap['vite']} name="Vite" />
-              </div>
-            ))}
+            {
+              [...Array(2)].map(() => (
+                <div class="orbit-group">
+                  <TechChip Icon={techIconMap['react']} name="React" />
+                  <TechChip Icon={techIconMap['astro']} name="Astro" />
+                  <TechChip Icon={techIconMap['tailwind']} name="Tailwind" />
+                  <TechChip Icon={techIconMap['bootstrap']} name="Bootstrap" />
+                  <TechChip Icon={techIconMap['sass']} name="Sass" />
+                  <TechChip Icon={techIconMap['vite']} name="Vite" />
+                </div>
+              ))
+            }
           </div>
         </div>
 
         <!-- Row 3: Tools & Ops (LTR) -->
         <div class="orbit-wrapper mt-4" data-speed="1.0">
           <div class="orbit-track track-ltr">
-            {[...Array(2)].map(() => (
-              <div class="orbit-group">
-                <TechChip Icon={techIconMap['figma']} name="Figma" />
-                <TechChip Icon={techIconMap['github']} name="GitHub" />
-                <TechChip Icon={techIconMap['docker']} name="Docker" />
-                <TechChip Icon={techIconMap['seo']} name="SEO" />
-                <TechChip Icon={techIconMap['git']} name="Git" />
-                <TechChip Icon={techIconMap['trello']} name="Trello" />
-              </div>
-            ))}
+            {
+              [...Array(2)].map(() => (
+                <div class="orbit-group">
+                  <TechChip Icon={techIconMap['figma']} name="Figma" />
+                  <TechChip Icon={techIconMap['github']} name="GitHub" />
+                  <TechChip Icon={techIconMap['docker']} name="Docker" />
+                  <TechChip Icon={techIconMap['seo']} name="SEO" />
+                  <TechChip Icon={techIconMap['git']} name="Git" />
+                  <TechChip Icon={techIconMap['trello']} name="Trello" />
+                </div>
+              ))
+            }
           </div>
         </div>
       </div>
@@ -178,7 +190,7 @@ import { IconPackages, IconSitemap, IconBrain } from '@tabler/icons-react';
   function initOrbit() {
     const wrappers = document.querySelectorAll('.orbit-wrapper');
     const container = document.querySelector('.orbit-container');
-    
+
     if (!container) return;
 
     wrappers.forEach((wrapper) => {
@@ -187,23 +199,24 @@ import { IconPackages, IconSitemap, IconBrain } from '@tabler/icons-react';
 
       const speed = parseFloat(wrapper.getAttribute('data-speed') || '1');
       const isRTL = track.classList.contains('track-rtl');
-      
+
       // Configuramos el estado inicial limpio
       gsap.set(track, { x: 0, xPercent: 0 });
 
       const xTarget = isRTL ? -50 : 0;
       const xStart = isRTL ? 0 : -50;
-      
+
       // Animación de loop continuo
-      const horizontalTween = gsap.fromTo(track, 
+      const horizontalTween = gsap.fromTo(
+        track,
         { xPercent: xStart },
-        { 
-          xPercent: xTarget, 
-          duration: 40 / speed, 
-          ease: "none", 
+        {
+          xPercent: xTarget,
+          duration: 40 / speed,
+          ease: 'none',
           repeat: -1,
           // Forzar renderizado para evitar jumps por rounding del navegador
-          force3D: true
+          force3D: true,
         }
       );
 
@@ -211,42 +224,50 @@ import { IconPackages, IconSitemap, IconBrain } from '@tabler/icons-react';
       const items = track.querySelectorAll('.orbit-group > *');
       items.forEach((item, index) => {
         gsap.to(item, {
-          y: "random(-2, 2)",
-          duration: "random(3, 5)",
+          y: 'random(-2, 2)',
+          duration: 'random(3, 5)',
           repeat: -1,
           yoyo: true,
-          ease: "sine.inOut",
-          delay: index * 0.2
+          ease: 'sine.inOut',
+          delay: index * 0.2,
         });
       });
 
       // Control interactivo de velocidad (Braking)
       wrapper.addEventListener('mouseenter', () => {
-        gsap.to(horizontalTween, { timeScale: 0.15, duration: 1.2, ease: "power3.out" });
+        gsap.to(horizontalTween, {
+          timeScale: 0.15,
+          duration: 1.2,
+          ease: 'power3.out',
+        });
       });
 
       wrapper.addEventListener('mouseleave', () => {
-        gsap.to(horizontalTween, { timeScale: 1, duration: 1.5, ease: "power3.inOut" });
+        gsap.to(horizontalTween, {
+          timeScale: 1,
+          duration: 1.5,
+          ease: 'power3.inOut',
+        });
       });
 
       // Manejo sofisticado de hover por chip
-      items.forEach(item => {
+      items.forEach((item) => {
         item.addEventListener('mouseenter', () => {
-          gsap.to(item, { 
-            scale: 1.05, 
+          gsap.to(item, {
+            scale: 1.05,
             zIndex: 10,
-            duration: 0.4, 
-            ease: "power3.out",
-            overwrite: "auto"
+            duration: 0.4,
+            ease: 'power3.out',
+            overwrite: 'auto',
           });
         });
         item.addEventListener('mouseleave', () => {
-          gsap.to(item, { 
-            scale: 1, 
-            zIndex: 1, 
-            duration: 0.5, 
-            ease: "power3.inOut",
-            overwrite: "auto"
+          gsap.to(item, {
+            scale: 1,
+            zIndex: 1,
+            duration: 0.5,
+            ease: 'power3.inOut',
+            overwrite: 'auto',
           });
         });
       });

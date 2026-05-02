@@ -3,8 +3,8 @@ type: 'Work'
 title: 'Co-Líder de Proyectos Web'
 entity: 'Devdatep Consulting'
 location: 'Remoto. Lima, Perú'
-startDate: 2023-01-01
-endDate: 2024-01-01
+startDate: 2023-11-01
+endDate: 2024-04-01
 contractType: 'Pasantía / Contrato'
 description: Lideré la integración operativa entre los equipos de Diseño y Desarrollo. Actué como nexo estratégico entre los equipos de Diseño y Desarrollo, garantizando la viabilidad técnica de las interfaces. Gestioné la asignación de tareas y reportes de avance, además de colaborar activamente en el código para acelerar la implementación de componentes complejos.
 achievements:
